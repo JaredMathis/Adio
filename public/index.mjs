@@ -35,7 +35,7 @@ function audio_speak(words) {
     throw new Error('test error');
 }
 
-window.onError = function(message, source, lineno, colno, error) {
+window.onerror  = function(message, source, lineno, colno, error) {
     output('error ' + message)
 }
 
