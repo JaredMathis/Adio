@@ -21,15 +21,18 @@ function audio_speak(words) {
     output('paused audio')
     annyang.abort();
 
-    var msg = new SpeechSynthesisUtterance();
-    msg.text = words.join(' ');
-    window.speechSynthesis.speak(msg);
-    output('speaking ' + msg.text)
-
-    msg.onend = (event) => {
-        output('finished ' + words);
-        output('starting audio');
-        annyang.start();
+    try {
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = words.join(' ');
+        msg.onend = (event) => {
+            output('finished ' + words);
+            output('starting audio');
+            annyang.start();
+        }
+        window.speechSynthesis.speak(msg);
+        output('speaking ' + msg.text)
+    } catch (e) {
+        output(e);
     }
 }
 
