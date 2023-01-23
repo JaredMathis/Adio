@@ -32,7 +32,6 @@ function audio_speak(words) {
         console.log('finished ' + words);
         annyang.start();
     }
-
 }
 
 function list_string_non_empty(s) {
