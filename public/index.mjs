@@ -1,5 +1,3 @@
-let paused = false;
-
 if (annyang) {
     annyang.addCallback('resultNoMatch', result => {
         process_audio(result[0])
