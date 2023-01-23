@@ -21,19 +21,22 @@ function audio_speak(words) {
     output('paused audio')
     annyang.abort();
 
-    try {
-        var msg = new SpeechSynthesisUtterance();
-        msg.text = words.join(' ');
-        msg.onend = (event) => {
-            output('finished ' + words);
-            output('starting audio');
-            annyang.start();
-        }
-        window.speechSynthesis.speak(msg);
-        output('speaking ' + msg.text)
-    } catch (e) {
-        output(e);
+    var msg = new SpeechSynthesisUtterance();
+    msg.text = words.join(' ');
+
+    msg.onend = (event) => {
+        output('finished ' + words);
+        output('starting audio');
+        annyang.start();
     }
+    window.speechSynthesis.speak(msg);
+    output('speaking ' + msg.text)
+
+    throw new Error('test error');
+}
+
+window.onError = function(message, source, lineno, colno, error) {
+    output('error ' + message)
 }
 
 function output(message) {
