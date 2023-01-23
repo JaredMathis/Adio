@@ -1,15 +1,17 @@
 if (annyang) {
     annyang.addCallback('resultNoMatch', result => {
-        process(result[0])
+        process_audio(result[0])
     })
   
     annyang.start(); 
 }
 
-function process(input_string) {
+let previous = [];
+
+function process_audio(input_string) {
     let non_empty = string_split_by_space(input_string);
     let filtered = list_string_non_empty(non_empty);
-    alert(filtered);
+    previous.push(...filtered);
 }
 
 function list_string_non_empty(s) {
