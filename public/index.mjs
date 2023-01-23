@@ -11,7 +11,7 @@ if (annyang) {
 let previous = [];
 
 function process_audio(input_string) {
-    console.log('processing ' + input_string);
+    output('processing ' + input_string);
     let non_empty = string_split_by_space(input_string);
     let filtered = list_string_non_empty(non_empty);
     previous.push(...filtered);
@@ -20,18 +20,25 @@ function process_audio(input_string) {
 }
 
 function audio_speak(words) {
-    console.log('paused')
+    output('paused audio')
     annyang.abort();
 
     var msg = new SpeechSynthesisUtterance();
     msg.text = words.join(' ');
     window.speechSynthesis.speak(msg);
-    console.log(msg.text)
+    output('speaking ' + msg.text)
 
     msg.onend = (event) => {
-        console.log('finished ' + words);
+        output('finished ' + words);
+        output('starting audio');
         annyang.start();
     }
+}
+
+function output(message) {
+    let m = document.createElement('div');
+    m.innerHTML = message;
+    document.body.appendChild(m);
 }
 
 function list_string_non_empty(s) {
