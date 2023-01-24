@@ -306,7 +306,7 @@ call range each go
 
 function list 2 d each go
 input list go
-
+input on each go
 push list go
 push each row go
 call list each go
@@ -317,7 +317,11 @@ call list each go
     call list each go
         inner function each column go
         input value go
-
+        input x go
+        push value go
+        push x go
+        push y go
+        call on each go
         back go
     back go
 
