@@ -126,6 +126,10 @@ function apply_symbols(list) {
                 "minus": '-',
                 "equals": '=',
                 "dot": '.',
+                "space": ' ',
+                "underscore": '_',
+                "less": '<',
+                "greater": '>',
             }[symbol_prefix.join(' ')]
             if (typeof actual !== typeof '') {
                 error(`Symbol is invalid: ${symbol_prefix.join(' ')}`)
