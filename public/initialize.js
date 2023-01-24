@@ -164,7 +164,7 @@ local move go
 store move go
 push move go
 call tic tac toe move convert go
-local converted go
+output converted go
 store converted go
 
 function tic tac toe instructions go
