@@ -5,6 +5,12 @@ input b go
 output c go
 eval string c symbol equals a symbol plus b go
 
+function subtract go
+input a go
+input b go
+output c go
+eval string c symbol equals a symbol minus b go
+
 function double go
 input a go
 output b go

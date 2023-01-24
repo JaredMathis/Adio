@@ -95,6 +95,7 @@ function apply_symbols(list) {
             symbol_is = false;
             actual = {
                 "plus": '+',
+                "minus": '-',
                 "equals": '=',
             }[item]
             if (typeof actual !== typeof '') {
