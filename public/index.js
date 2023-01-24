@@ -10,9 +10,11 @@ let buffer = [];
 
 function process_audio(input_string) {
     output('processing ' + input_string);
-    let non_empty = string_split_by_space(input_string);
+    let non_empty = string_split_by_whitespace(input_string);
     let filtered = list_string_non_empty(non_empty);
-    buffer.push(...filtered);
+    let trimmed = filtered.map(f => f.trim('\n'));
+    let lowered = trimmed.map(f => f.toLowerCase());
+    buffer.push(...lowered);
 
     process_try();
 }
@@ -28,7 +30,8 @@ let commands = [
 
 function process_try() {
     for (let c of commands) {
-        let prefixes = string_split_by_space(c.prefix);
+        let prefixes = string_split_by_whitespace(c.prefix);
+        console.log({buffer, prefixes})
         if (list_prefix_is(buffer, prefixes)) {
             let next_go = buffer.indexOf('go');
             let remaining = buffer.slice(prefixes.length, next_go);
@@ -80,6 +83,6 @@ function list_string_non_empty(s) {
     return s.filter(i => i.length > 0)
 }
 
-function string_split_by_space(s) {
-    return s.split(' ')
+function string_split_by_whitespace(s) {
+    return s.split(/\s/)
 }
