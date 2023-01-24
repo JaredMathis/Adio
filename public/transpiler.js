@@ -23,6 +23,7 @@ function code_step_get(step) {
         let value = code_expression_get(step.value);
         return `eval(${value})`
     }
+    error('invalid step: ' + step);
 }
 
 function code_expression_get(e) {
