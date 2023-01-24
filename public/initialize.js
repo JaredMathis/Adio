@@ -11,6 +11,10 @@ output b go
 eval string b symbol equals a symbol plus a go
 
 function tic tac toe go
-push string hello go
+push string welcome to tic tac toe go
+call speak go
+push string it is your turn to move go
+call speak go
+push string to move choose a number from one to nine representing the cell you choose go
 call speak go
 `)
