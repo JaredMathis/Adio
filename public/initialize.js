@@ -133,6 +133,7 @@ function tic tac toe go
 call tic tac toe instructions go
 call tic tac toe board new go
 local board go
+store board go
 call listen go
 local move go
 store move go
