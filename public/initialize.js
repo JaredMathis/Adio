@@ -332,6 +332,8 @@ call list new go
 store available go
 push board go
 call list 2 d each go
+    inner function on each go
+    back go
 
 function tic tac toe cpu choice get go
 input board go
