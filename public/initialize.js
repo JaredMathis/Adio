@@ -294,6 +294,8 @@ call if else go
     push choice go
     push number 1 go
     call tic tac toe board set go
+    push board go
+    call log go
     back go
 
     inner function invalid go
