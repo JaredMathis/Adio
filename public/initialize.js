@@ -131,6 +131,8 @@ input x go
 push list go
 push y go
 call list get go
+local row go
+store row go
 
 
 function tic tac toe board new go
