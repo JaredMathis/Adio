@@ -59,7 +59,8 @@ let commands = [
                 };
                 current.inputs.push(input);
                 let expect = current.function.inputs.length;
-                let actual = current.inputs.length
+                let actual = current.inputs.length;
+                console.log({expect, actual})
                 if (expect < actual) {
                     error(`Function ${current.function.name} expects ${expect} input; received ${actual}`)
                 } else {
@@ -119,7 +120,8 @@ let commands = [
         prefix: 'run function',
         exec: name => {
             name = list_to_identifier(name)
-            current = runner.function = function_get(name);
+            current = runner;
+            current.function = function_get(name);
             if (!current) {
                 error(`No function named ${name}`);
             }
