@@ -110,12 +110,15 @@ function apply_symbols(list) {
             let partials = [
                 'parenthesis',
                 'bracket',
+                'brace',
             ]
             if (partials.includes(item)) {
                 continue;
             }
 
             actual = {
+                "brace open": '{',
+                "brace close": '}',
                 "bracket open": '[',
                 "bracket close": ']',
                 "parenthesis open": '(',
@@ -130,6 +133,7 @@ function apply_symbols(list) {
                 "underscore": '_',
                 "less": '<',
                 "greater": '>',
+                "semicolon": ';',
             }[symbol_prefix.join(' ')]
             if (typeof actual !== typeof '') {
                 error(`Symbol is invalid: ${symbol_prefix.join(' ')}`)
