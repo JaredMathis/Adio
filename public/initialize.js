@@ -277,10 +277,10 @@ input a go
 eval string console symbol dot log symbol parenthesis open a symbol parenthesis close go
 
 function tic tac toe go
-call tic tac toe instructions go
 call tic tac toe board new go
 local board go
 store board go
+call tic tac toe instructions go
 call tic tac toe listen move go
 local choice go
 store choice go
