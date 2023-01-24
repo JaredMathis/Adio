@@ -85,27 +85,27 @@ push size go
 push lambda go
 call range each go
 inner function lambda go
-input item go
 push result go
-push item go
+push undefined go
 call list add go
 
 function list two d new go
-input rows go
-input columns go
+input row count go
+input column count go
 output result go
 call list new go
 store result go
-push rows go
-call range go
-local rows range go
-store rows range go
-push columns go
-call range go
-local columns range go
-store columns range go
-call list each go
-inner function lambda go
+push row count go
+push each row go
+call range each go
+inner function each row go
+push column count go
+call list of size go
+local row go
+store row go
+push result go
+push row go
+call list add go
 
 function tic tac toe go
 call tic tac toe instructions go
