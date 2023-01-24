@@ -53,8 +53,9 @@ function process_audio(input_string) {
 
 function word_normalize(w) {
     let normies = [
-        ['two', 'to', 'too'],
         ['b', 'bee', 'be'],
+        ['two', 'to', 'too'],
+        ['four', 'for'],
     ];
     for (let n of normies) {
         if (n.includes(w)) {
