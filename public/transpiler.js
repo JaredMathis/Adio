@@ -88,10 +88,19 @@ function apply_symbols(list) {
     let result = [];
     let symbol_is = false;
     let symbol_prefix;
+    let uppercase = false;
     for (let item of list) {
         if (item === 'symbol') {
             symbol_is = true;
             symbol_prefix = [];
+            continue;
+        }
+        if (item === 'uppercase') {
+            uppercase = true;
+            continue;
+        }
+        if (item === 'lowercase') {
+            uppercase = false;
             continue;
         }
         let actual;
@@ -119,6 +128,9 @@ function apply_symbols(list) {
             symbol_is = false;
         } else {
             actual = item;
+        }
+        if (uppercase) {
+            actual = actual.toUpperCase();
         }
         result.push(actual);
     }
