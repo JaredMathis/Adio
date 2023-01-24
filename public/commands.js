@@ -76,7 +76,7 @@ let commands = [
         prefix: 'back',
         help: `This command changes the current to the parent object`,
         allowed: () => current.type === 'function',
-        exec: name => {
+        exec: () => {
             current = parent_get(data, current)
         }
     },
