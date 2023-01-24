@@ -77,8 +77,9 @@ let commands = [
         help: `This command changes the current to the parent object`,
         allowed: () => current.type === 'function',
         exec: () => {
-            current = parent_get(data, current)
-            current = parent_get(data, current)
+            do {
+                current = parent_get(data, current)
+            } while (typeof current === typeof [])
         }
     },
     {
