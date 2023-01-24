@@ -53,18 +53,7 @@ let commands = [
             name = list_to_identifier(name)
             current = function_get(name);
             if (!current) {
-                current = {
-                    type: 'function',
-                    name: name,
-                    inputs: [
-                    ],
-                    locals: [
-                    ],
-                    steps: [
-                    ],
-                    inners: [
-                    ]
-                };
+                function_new(name);
                 data.functions.push(current)
             }
         }
@@ -219,3 +208,14 @@ let commands = [
         }
     }
 ]
+
+function function_new(name) {
+    current = {
+        type: 'function',
+        name: name,
+        inputs: [],
+        locals: [],
+        steps: [],
+        inners: []
+    };
+}
