@@ -33,7 +33,7 @@ let commands = [
         prefix: 'function',
         exec: name => {
             name = list_to_identifier(name)
-            function_get(name);
+            current = function_get(name);
             if (!current) {
                 current = {
                     type: 'function',
@@ -237,6 +237,7 @@ function assert(condition) {
 function process_try() {
     for (let c of commands) {
         let prefixes = string_split_by_whitespace(c.prefix);
+        console.log(prefixes)
         if (list_prefix_is(buffer, prefixes)) {
             let next_go = buffer.indexOf('go');
             let remaining = buffer.slice(prefixes.length, next_go);
