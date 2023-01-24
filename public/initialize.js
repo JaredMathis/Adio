@@ -93,12 +93,21 @@ store value go
 
 function list set go
 input list go
-input name go
+input index go
 input value go
 push list go
-push name go
+push index go
 push value go
 call property set go
+
+function list get go
+input list go
+input index go
+output value go
+push list go
+push index go
+call property get go
+store value go
 
 function list of size go
 input size go
