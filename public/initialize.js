@@ -276,6 +276,7 @@ input a go
 eval string console symbol dot log symbol parenthesis open a symbol parenthesis close go
 
 function list each go
+input list go
 
 function tic tac toe go
 call tic tac toe board new go
