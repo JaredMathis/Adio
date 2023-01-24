@@ -242,7 +242,14 @@ call tic tac toe board get go
 local choice value go
 store choice value go
 push choice value go
-
+push undefined go
+call equals go
+local unoccupied go
+store unoccupied go
+push unoccupied go
+push valid go
+push invalid go
+call if else go
 inner function valid go
 inner function invalid go
 `)
