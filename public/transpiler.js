@@ -11,6 +11,7 @@ function function_run(fn, inputs) {
 
 function code_get(fn) {
     return `function ${fn.name}(${fn.inputs.map(i => i.name).join(', ')}) {
+let _args = [];
 ${ !fn.output ? "" : `let ${fn.output.name};` }
 ${fn.steps.map(step => code_step_get(step)).join(`;
 `)}
@@ -22,6 +23,10 @@ function code_step_get(step) {
     if (step.type === `eval`) {
         let value = code_expression_get(step.value);
         return `eval(${value})`
+    }
+    if (step.type === `push`) {
+        let value = code_expression_get(step.value);
+        return `_args.push(${value})`
     }
     error('invalid step: ' + step);
 }
