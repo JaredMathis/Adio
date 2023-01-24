@@ -76,6 +76,12 @@ input list go
 input item go
 eval string list symbol dot push symbol parenthesis open item symbol parenthesis close go
 
+function property set go
+input object go
+input name go
+input value go
+eval string object symbol bracket open name symbol bracket close symbol equals value go
+
 function list of size go
 input size go
 output result go
