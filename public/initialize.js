@@ -154,6 +154,8 @@ function tic tac toe listen move go
 call listen go
 local move go
 store move go
+push move go
+call tic tac toe move convert go
 
 function tic tac toe go
 call tic tac toe instructions go
