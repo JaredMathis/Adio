@@ -211,7 +211,18 @@ function code_expression_get(e) {
 }
 
 function string_to_digit(s) {
-    let lookup = [['zero'], ['one'], ['two', 'to', 'too'], ['three'], ['four'], ['five'], ['six'], ['seven'], ['eight'], ['nine']]
+    let lookup = [
+        ['zero'], 
+        ['one'], 
+        ['two', 'to', 'too'], 
+        ['three'], 
+        ['four'], 
+        ['five'], 
+        ['six'], 
+        ['seven'], 
+        ['eight'], 
+        ['nine']
+    ]
     for (let i = 0; i< lookup.length; i++) {
         if (lookup[i].includes(s)) {
             return i;
