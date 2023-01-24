@@ -296,6 +296,11 @@ call range each go
     inner function lambda go
     input index go
     local item go
+    push list go
+    push index go
+    call property get go
+    store item go
+
 
 function tic tac toe go
 call tic tac toe board new go
