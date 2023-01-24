@@ -59,6 +59,20 @@ let commands = [
         }
     },
     {
+        prefix: 'inner function',
+        help: `This command creates an inner function with the name you say, if it does not yet exist. Then it opens the function. You must be in a function to create an inner function.`,
+        allowed: () => current.type === 'function',
+        exec: name => {
+            name = list_to_identifier(name);
+            let previous = current;
+            current = function_inner_get(name);
+            if (!current) {
+                function_new(name);
+                previous.inner.push(current)
+            }
+        }
+    },
+    {
         prefix: 'input',
         help:  `This command sets the next input for the function being ran to the value you say`,
         allowed: () => current.type === 'runner',
@@ -218,4 +232,23 @@ function function_new(name) {
         steps: [],
         inners: []
     };
+}
+
+function function_inner_get(name) {
+    let result;
+    for (let f of current.inners) {
+        if (f.name === name) {
+            result = f;
+        }
+    }
+    return result;
+}
+function function_get(name) {
+    let result;
+    for (let f of data.functions) {
+        if (f.name === name) {
+            result = f;
+        }
+    }
+    return result;
 }

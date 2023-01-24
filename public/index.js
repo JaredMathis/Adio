@@ -101,16 +101,6 @@ function list_find(available, predicate) {
 }
 
 
-function function_get(name) {
-    let result;
-    for (let f of data.functions) {
-        if (f.name === name) {
-            result = f;
-        }
-    }
-    return result;
-}
-
 function list_to_identifier(list) {
     return list.join('_');
 }
