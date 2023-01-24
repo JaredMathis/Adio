@@ -51,11 +51,11 @@ let commands = [
         prefix: 'input',
         exec: name => {
             if (current.type !== 'function') {
-                audio_speak(`Cannot set input. Must be in function.`);
+                error(`Cannot add input. Must be in function.`);
             }
             for (let i of current.inputs) {
                 if (i.name === name) {
-                    audio_speak(`Input ${name} already exists for function ${parent_get(data, current).name}`);
+                    error(`Input ${name} already exists for function ${parent_get(data, current).name}`);
                 }
             }
             let input = {
@@ -69,10 +69,10 @@ let commands = [
         prefix: 'output',
         exec: name => {
             if (current.type !== 'function') {
-                audio_speak(`Cannot set output. Must be in function.`);
+                error(`Cannot set output. Must be in function.`);
             }
             if (current.output) {
-                audio_speak(`Output ${name} already exists for function ${parent_get(data, current).name}`);
+                error(`Output ${name} already exists for function ${parent_get(data, current).name}`);
             }
             let output = {
                 type: 'output',
@@ -82,6 +82,12 @@ let commands = [
         }
     }
 ]
+
+function error(message) {
+    buffer.length = 0;
+    audio_speak(message);
+    throw new Error('message');
+}
 
 function assert(condition) {
     if (!condition) {
