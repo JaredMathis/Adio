@@ -31,4 +31,6 @@ function double(a) { let b; eval("b=a+a") return b; }
 double(7);
 ```
 
+For more examples see: https://github.com/JaredMathis/Adio/blob/main/public/initialize.js
+
 Adio
