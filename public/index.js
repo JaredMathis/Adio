@@ -127,6 +127,12 @@ let commands = [
                 error(`No function named ${name}`);
             }
         }
+    },
+    {
+        prefix: 'say',
+        exec: remaining => {
+            audio_speak(remaining.join(' '));
+        }
     }
 ]
 
@@ -240,6 +246,9 @@ function process_try() {
         console.log(prefixes)
         if (list_prefix_is(buffer, prefixes)) {
             let next_go = buffer.indexOf('go');
+            if (next_go < 0) {
+                return;
+            }
             let remaining = buffer.slice(prefixes.length, next_go);
             c.exec(remaining);
             buffer = buffer.slice(next_go + 1);
