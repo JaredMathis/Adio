@@ -241,5 +241,8 @@ push choice go
 call tic tac toe board get go
 local choice value go
 store choice value go
+push choice value go
 
+inner function valid go
+inner function invalid go
 `)
