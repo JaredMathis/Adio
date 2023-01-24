@@ -24,17 +24,16 @@ let data = {
     functions: [],
 };
 let current;
+let runner = {
+    type: 'runner',
+}
 
 let commands = [
     {
         prefix: 'function',
         exec: name => {
             name = list_to_identifier(name)
-            for (let f of data.functions) {
-                if (f.name === name) {
-                    current = f;
-                }
-            }
+            function_get(name);
             if (!current) {
                 current = {
                     type: 'function',
@@ -87,19 +86,25 @@ let commands = [
         }
     },
     {
-        prefix: 'eval',
-        exec: remaining => {
-            if (current.type !== 'function') {
-                error(`Cannot add eval. Must be in function.`);
+        prefix: 'run function',
+        exec: name => {
+            name = list_to_identifier(name)
+            current = runner.function = function_get(name);
+            if (!current) {
+                error(`No function named ${name}`);
             }
-            let eval = {
-                type: 'eval',
-                data: remaining,
-            };
-            current.steps.push(eval);
+            current = [];
         }
     }
 ]
+
+function function_get(name) {
+    for (let f of data.functions) {
+        if (f.name === name) {
+            current = f;
+        }
+    }
+}
 
 function list_to_identifier(list) {
     return list.join('_');
