@@ -107,11 +107,17 @@ function apply_symbols(list) {
         if (symbol_is) {
             symbol_prefix.push(item);
             
-            if (item === 'parenthesis') {
+            let partials = [
+                'parenthesis',
+                'bracket',
+            ]
+            if (partials.includes(item)) {
                 continue;
             }
 
             actual = {
+                "bracket open": '[',
+                "bracket close": ']',
                 "parenthesis open": '(',
                 "parenthesis close": ')',
                 "plus": '+',

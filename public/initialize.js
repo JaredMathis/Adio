@@ -62,6 +62,13 @@ call speak go
 push words to move choose a number from one to nine representing the cell you choose go
 call speak go
 
+function list new go
+output a go
+eval string a symbol equals symbol bracket open symbol bracket closed
+
+function list with size go
+input size go
+
 function tic tac toe go
 call tic tac toe instructions go
 call listen go
@@ -75,4 +82,15 @@ push move number go
 call subtract one go
 local move number less go
 store move number less go
+push move number less go
+push number three go
+call divide floor go
+local move row go
+store move row go
+push move number less go
+push number three go
+call mod go
+local move column go
+store move column go
+
 `)
