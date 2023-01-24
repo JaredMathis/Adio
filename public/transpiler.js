@@ -1,16 +1,18 @@
 
-function function_run(fn, inputs) {
+async function function_run(fn, inputs) {
     let code = code_get(fn);
     output(code);
     eval_global(code)
     const code2 = `${fn.name}(${inputs.map(i => code_expression_get(i.value)).join(', ')})`;
     output(code2);
-    let result = eval_global(code2)
-    speak(result);
+    let result = await eval_global(code2)
+    if (result !== undefined) {
+        speak(result);
+    }
 }
 
 function code_get(fn) {
-    return `function ${fn.name}(${fn.inputs.map(i => i.name).join(', ')}) {
+    return `async function ${fn.name}(${fn.inputs.map(i => i.name).join(', ')}) {
 let _args = [];
 ${ !fn.output ? "" : `let ${fn.output.name};` }
 ${fn.steps.map(step => code_step_get(step)).join(`;
@@ -29,7 +31,7 @@ function code_step_get(step) {
         return `_args.push(${value})`
     }
     if (step.type === `call`) {
-        return `${step.name}(..._args);_args.length = 0`
+        return `await ${step.name}(..._args);_args.length = 0`
     }
     error('invalid step: ' + step);
 }
@@ -39,6 +41,9 @@ function code_expression_get(e) {
     let remaining = e.slice(1);
     if (e[0] === 'string') {
         let joined = apply_symbols(remaining).join("");
+        value = `"${joined}"`;
+    } else if (e[0] === 'words') {
+        let joined = (remaining).join(" ");
         value = `"${joined}"`;
     } else if (e[0] === 'number') {
         value = remaining.map(r => string_to_digit(r)).join('')

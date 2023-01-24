@@ -11,23 +11,26 @@ let output_audio_pauses = false
 let most_recent;
 
 function speak(words) {
-    if (output_audio_pauses)
-        output('paused audio')
-    annyang.abort();
-
-    var msg = new SpeechSynthesisUtterance();
-    msg.text = most_recent = words;
-
-    msg.onend = (event) => {
+    return new Promise((resolve) => {
         if (output_audio_pauses)
-            output('finished ' + words);
-        if (output_audio_pauses)
-            output('starting audio');
-        annyang.start();
-    }
-    window.speechSynthesis.cancel();
-    window.speechSynthesis.speak(msg);
-    output('speaking: ' + msg.text)
+            output('paused audio')
+        annyang.abort();
+
+        var msg = new SpeechSynthesisUtterance();
+        msg.text = most_recent = words;
+
+        msg.onend = (event) => {
+            if (output_audio_pauses)
+                output('finished ' + words);
+            if (output_audio_pauses)
+                output('starting audio');
+            annyang.start();
+            resolve();
+        }
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(msg);
+        output('speaking: ' + msg.text)
+    })
 }
 
 function output(message) {
