@@ -80,8 +80,7 @@ let commands = [
             do {
                 let before = current;
                 current = parent_get(data, current);
-                console.log({current, before})
-            } while (typeof current === typeof [])
+            } while (Array.isArray(current))
         }
     },
     {
