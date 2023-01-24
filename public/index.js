@@ -213,7 +213,7 @@ function code_expression_get(e) {
         let joined = apply_symbols(remaining).join("");
         value = `"${joined}"`;
     } else if (e[0] === 'number') {
-        value = remaining.map(r => string_to_digit(r))
+        value = remaining.map(r => string_to_digit(r)).join('')
     } else {
         error('Invalid expression type: ' + e[0]);
     }
@@ -291,7 +291,7 @@ function list_to_identifier(list) {
 function error(message) {
     buffer.length = 0;
     audio_speak(message);
-    throw new Error('message');
+    throw new Error(message);
 }
 
 function assert(condition) {
@@ -314,6 +314,11 @@ function process_try() {
             process_try();
         }
     }
+    if (buffer.length === 0) {
+        return;
+    }
+    console.log(JSON.stringify(buffer))
+    error('Invalid command ' + buffer.join(' '))
 }
 
 function parent_get(root, item) {
