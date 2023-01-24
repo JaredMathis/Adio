@@ -71,6 +71,11 @@ input limit go
 input lambda go
 eval string symbol parenthesis open async symbol parenthesis open symbol parenthesis close symbol equals symbol greater symbol brace open f o r symbol parenthesis open let symbol space symbol underscore i symbol equals zero symbol semicolon symbol underscore i symbol less limit symbol semicolon symbol underscore i symbol plus symbol plus symbol parenthesis close symbol brace open await symbol space lambda symbol parenthesis open symbol underscore i symbol parenthesis close symbol brace close symbol brace close symbol parenthesis close symbol parenthesis open close symbol parenthesis close go
 
+function list add go
+input list go
+input item go
+eval string list symbol dot push symbol parenthesis open item symbol parenthesis close go
+
 function list of size go
 input size go
 output result go
@@ -80,9 +85,10 @@ push size go
 push lambda go
 call range each go
 inner function lambda go
-input a go
-push a go
-call speak go
+input item go
+push result go
+push item go
+call list add go
 
 function list two d new go
 input rows go
