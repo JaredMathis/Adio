@@ -304,7 +304,8 @@ call range each go
     call on each go
 
 function tic tac toe available get go
-
+input board go
+output available go
 
 function tic tac toe cpu choice get go
 input board go
