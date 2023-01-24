@@ -148,8 +148,8 @@ ${fn.steps.map(step => code_step_get(step)).join(`;
 function code_step_get(step) {
     if (step.type === `eval`) {
         let value;
-        assert(step.remaining[0] === 'string');
-        let remaining = step.remaining.slice(1);
+        assert(step.value[0] === 'string');
+        let remaining = step.value.slice(1);
         let joined = apply_symbols(remaining).join("");
         value = `"${joined}"`;
         return `eval(${value})`
