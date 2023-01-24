@@ -2,7 +2,10 @@
 <html>
     <head></head>
     <body>
-        <button id="b" onclick="document.getElementById('b').hidden = true" style="width:100%;height:100%" disabled>click first otherwise refresh and try again</button>
+        <button id="b" onclick="document.getElementById('b').hidden = true" style="width:100%;height:100%" disabled>
+            click first otherwise refresh and try again</button>
+        <button onclick="audio_speak(most_recent)" style="width:100%;height:10%">
+            click to play most recent</button>
         <script>
 if ( 'speechSynthesis' in window ) {
   speechSynthesis.cancel(); // removes anything 'stuck'
@@ -12,6 +15,6 @@ if ( 'speechSynthesis' in window ) {
 }
         </script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
-        <script type="module" src="index.mjs"></script>
+        <script src="index.js"></script>
     </body>
 </html>

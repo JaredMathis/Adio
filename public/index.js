@@ -14,15 +14,17 @@ function process_audio(input_string) {
     let filtered = list_string_non_empty(non_empty);
     previous.push(...filtered);
 
-    audio_speak(filtered);
+    audio_speak(filtered.join(' '));
 }
+
+let most_recent;
 
 function audio_speak(words) {
     output('paused audio')
     annyang.abort();
 
     var msg = new SpeechSynthesisUtterance();
-    msg.text = words.join(' ');
+    msg.text = most_recent = words;
 
     msg.onend = (event) => {
         output('finished ' + words);
