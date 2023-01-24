@@ -123,7 +123,6 @@ function error(message) {
 
 let listen_resolves = [];
 function listen() {
-    console.log('here list')
     return new Promise(resolve => listen_resolves.push(resolve));
 }
 
