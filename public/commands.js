@@ -143,10 +143,10 @@ let commands = [
             name = list_to_identifier(name)
             current = runner;
             current.function = function_get(name);
-            current.inputs = [];
-            if (!current) {
+            if (!current.function) {
                 error(`No function named ${name}`);
             }
+            current.inputs = [];
             if (current.function.inputs.length === 0) {
                 function_run(current.function, []);
             }

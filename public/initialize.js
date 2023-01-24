@@ -10,4 +10,7 @@ input a go
 output b go
 eval string b symbol equals a symbol plus a go
 
+function tic tac toe go
+push string hello go
+call speak go
 `)

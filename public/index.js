@@ -10,7 +10,7 @@ let output_audio_pauses = false
 
 let most_recent;
 
-function audio_speak(words) {
+function speak(words) {
     if (output_audio_pauses)
         output('paused audio')
     annyang.abort();
@@ -102,7 +102,7 @@ function list_to_identifier(list) {
 
 function error(message) {
     buffer.length = 0;
-    audio_speak(message);
+    speak(message);
     throw new Error(message);
 }
 
@@ -110,7 +110,7 @@ function error(message) {
 function process_try() {
     let help_index = buffer.indexOf('help');
     if (help_index >= 0) {
-        audio_speak(`Say, "list commands go" to hear a list of commands you can say right now. Use the "info" command to get information about a command.`);
+        speak(`Say, "list commands go" to hear a list of commands you can say right now. Use the "info" command to get information about a command.`);
         buffer.length = 0;
         return;
     }
