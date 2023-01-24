@@ -27,16 +27,16 @@ let current;
 let commands = [
     {
         prefix: 'function',
-        exec: function_name => {
+        exec: name => {
             for (let f of data.functions) {
-                if (f.name === function_name) {
+                if (f.name === name) {
                     current = f;
                 }
             }
             if (!current) {
                 current = {
                     type: 'function',
-                    name: function_name,
+                    name: name,
                     inputs: [
                     ],
                     steps: [
@@ -44,34 +44,50 @@ let commands = [
                     inners: [
                     ]
                 };
-                data.functions.push(current)
             }
         }
     },
     {
         prefix: 'input',
-        exec: input_name => {
+        exec: name => {
+            if (current.type !== 'function') {
+                audio_speak(`Cannot set input. Must be in function.`);
+            }
             for (let i of current.inputs) {
-                if (i.name === input_name) {
-                    audio_speak(`Input ${input_name} already exists for function ${parent_get(data, current)}`);
+                if (i.name === name) {
+                    audio_speak(`Input ${name} already exists for function ${parent_get(data, current).name}`);
                 }
             }
-            if (!current) {
-                current = {
-                    type: 'function',
-                    name: function_name,
-                    inputs: [
-                    ],
-                    steps: [
-                    ],
-                    inners: [
-                    ]
-                };
-                data.functions.push(current)
+            let input = {
+                type: 'input',
+                name,
+            };
+            current.inputs.push(input);
+        }
+    },
+    {
+        prefix: 'output',
+        exec: name => {
+            if (current.type !== 'function') {
+                audio_speak(`Cannot set output. Must be in function.`);
             }
+            if (current.output) {
+                audio_speak(`Output ${name} already exists for function ${parent_get(data, current).name}`);
+            }
+            let output = {
+                type: 'output',
+                name,
+            };
+            current.output = output;
         }
     }
 ]
+
+function assert(condition) {
+    if (!condition) {
+        throw new Error('error assert ');
+    }
+}
 
 function process_try() {
     for (let c of commands) {
