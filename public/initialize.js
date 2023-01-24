@@ -331,6 +331,8 @@ call if else go
     push number 1 go
     call tic tac toe board set go
 
+    
+
     back go
 
     inner function invalid go
