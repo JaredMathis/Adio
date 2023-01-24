@@ -275,6 +275,8 @@ function log go
 input a go
 eval string console symbol dot log symbol parenthesis open a symbol parenthesis close go
 
+function list each go
+
 function tic tac toe go
 call tic tac toe board new go
 local board go
@@ -302,6 +304,7 @@ call if else go
     push choice go
     push number 1 go
     call tic tac toe board set go
+
     back go
 
     inner function invalid go
