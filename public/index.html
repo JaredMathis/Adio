@@ -2,7 +2,10 @@
 <html>
     <head></head>
     <body>
-        <button id="b" onclick="document.getElementById('b').hidden = true" style="width:100%;height:100%" disabled>
+        <button id="b" onclick="
+            document.getElementById('b').hidden = true;
+            audio_speak('started');
+        " style="width:100%;height:100%" disabled>
             click first otherwise refresh and try again</button>
         <button onclick="audio_speak(most_recent)" style="width:100%;height:10%">
             click to play most recent</button>
