@@ -213,11 +213,7 @@ function code_expression_get(e) {
         let joined = apply_symbols(remaining).join("");
         value = `"${joined}"`;
     } else if (e[0] === 'number') {
-        if (/\d+/.test(remaining)) {
-            value = parseInt(remaining, 10);
-        } else {
-            value = remaining.map(r => string_to_digit(r))
-        }
+        value = remaining.map(r => string_to_digit(r))
     } else {
         error('Invalid expression type: ' + e[0]);
     }
@@ -225,6 +221,9 @@ function code_expression_get(e) {
 }
 
 function string_to_digit(s) {
+    if (/\d+/.test(s)) {
+        return parseInt(s, 10);
+    }
     let lookup = [
         ['zero'], 
         ['one'], 
