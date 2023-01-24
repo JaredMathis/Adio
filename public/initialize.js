@@ -128,7 +128,9 @@ function list two d get go
 input list go
 input y go
 input x go
-
+push list go
+push y go
+call list get go
 
 
 function tic tac toe board new go
