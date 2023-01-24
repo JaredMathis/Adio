@@ -215,6 +215,7 @@ push string row go
 call property get go
 local choice row go
 store choice row go
+push choice go
 push string column go
 call property get go
 local choice column go
