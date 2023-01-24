@@ -28,6 +28,9 @@ function code_step_get(step) {
         let value = code_expression_get(step.value);
         return `_args.push(${value})`
     }
+    if (step.type === `call`) {
+        return `${step.name}(..._args);args.length = 0`
+    }
     error('invalid step: ' + step);
 }
 
