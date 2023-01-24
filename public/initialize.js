@@ -66,8 +66,39 @@ function list new go
 output a go
 eval string a symbol equals symbol bracket open symbol bracket closed
 
-function list with size go
+function list of size go
 input size go
+output result go
+call list new go
+store result go
+push size go
+call range go
+local range of size go
+store range of size go
+push range of size go
+push lambda go
+call for each go
+inner function lambda go
+input a go
+push a go
+call speak go
+
+function list two d new go
+input rows go
+input columns go
+output result go
+call list new go
+store result go
+push rows go
+call range go
+local rows range go
+store rows range go
+push columns go
+call range go
+local columns range go
+store columns range go
+call for each go
+inner function lambda go
 
 function tic tac toe go
 call tic tac toe instructions go
