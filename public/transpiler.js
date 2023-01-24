@@ -35,7 +35,7 @@ function code_step_get(step) {
         return `_args.push(${value})`
     }
     if (step.type === `call`) {
-        return `result = await ${step.name}(..._args);_args.length = 0`
+        return `result = await ${step.name}(..._args);_args.length = 0;console.log('${step.name}',result)`
     }
     if (step.type === `store`) {
         return `${step.name} = result`
