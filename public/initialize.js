@@ -286,7 +286,10 @@ push valid go
 push invalid go
 call if else go
     inner function valid go
-    
+    push board go
+    push choice go
+    push number 1 go
+    call tic tac toe board set go
     back go
 
     inner function invalid go
