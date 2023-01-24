@@ -108,7 +108,7 @@ let commands = [
         exec: () => {
             let available = commands_allowed_get().map(c => c.prefix);
             available.sort();
-            audio_speak(`The following commands are available: ` + available.join(' and '))
+            audio_speak(`The following commands are available: ` + available.join('. '))
         }
     },
     {
