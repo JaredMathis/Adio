@@ -76,6 +76,32 @@ let runner = {
 
 let commands = [
     {
+        prefix: 'info',
+        help: `This command says information about how to use the command. For example, to get info about the info command say info info go. You say info twice because the first info calls the command and the second info is the name of the command to get information about.`,
+        allowed: () => true,
+        exec: remaining => {
+            let available = commands_allowed_get();
+            available.sort(function (a,b) {
+                return a.prefix - b.prefix;
+            });
+
+            let target = remaining.join(' ');
+
+            let predicate = a => a.prefix === target;
+            let match = list_find(available, predicate);
+            let global_match = list_find(commands, predicate);
+            if (!match) {
+                if (global_match) {
+                    error('This command exists, but is not available right now.');
+                } else {
+                    error('This command does not exist.')
+                }
+            }
+
+            audio_speak(match.help);
+        }
+    },
+    {
         prefix: 'list commands',
         help: `This command lists the commands that are available right now`,
         allowed: () => true,
@@ -202,6 +228,16 @@ let commands = [
     }
 ]
 
+function list_find(available, predicate) {
+    let match;
+    for (let c of available) {
+        if (predicate(c)) {
+            match = c;
+        }
+    }
+    return match;
+}
+
 function function_run(fn, inputs) {
     let code = code_get(fn);
     output(code);
@@ -325,7 +361,7 @@ function assert(condition) {
 function process_try() {
     let help_index = buffer.indexOf('help');
     if (help_index >= 0) {
-        audio_speak(`Say list commands go to hear a list of commands you can say right now.`);
+        audio_speak(`Say list commands go to hear a list of commands you can say right now. Use the info command to get information about a command.`);
         buffer.length = 0;
         return;
     }
