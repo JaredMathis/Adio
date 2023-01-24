@@ -43,12 +43,22 @@ function process_audio(input_string) {
     let filtered = list_string_non_empty(non_empty);
     let trimmed = filtered.map(f => f.trim('\n'));
     let lowered = trimmed.map(f => f.toLowerCase());
-    let normalized = lowered.map(l => word_normalize(l))
+    let split = words_split(lowered)
+    let normalized = split.map(l => word_normalize(l))
     output('received: ' + normalized.join(' '));
     buffer.push(...normalized);
 
     process_try();
     console.log({data})
+}
+
+function words_split(words) {
+    let result= [];
+    for (let w of words) {
+        let r = w.split('-');
+        result.push(...r);
+    }
+    return result;
 }
 
 function word_normalize(w) {

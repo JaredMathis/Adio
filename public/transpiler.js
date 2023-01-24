@@ -29,7 +29,7 @@ function code_step_get(step) {
         return `_args.push(${value})`
     }
     if (step.type === `call`) {
-        return `${step.name}(..._args);args.length = 0`
+        return `${step.name}(..._args);_args.length = 0`
     }
     error('invalid step: ' + step);
 }
