@@ -27,7 +27,23 @@ let commands = [
 ]
 
 function process_try() {
-    
+    for (let c of commands) {
+        let prefixes = string_split_by_space(c.prefix);
+        if (list_prefix_is(buffer, prefixes)) {
+            let next_go = buffer.indexOf('go');
+            let remaining = buffer.slice(prefixes.length, next_go);
+            c.exec(remaining);
+        }
+    }
+}
+
+function list_prefix_is(list, prefix_candidate) {
+    for (let i = 0; i < prefix_candidate.length; i++) {
+        if (list[i] !== prefix_candidate[i]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 let most_recent;
