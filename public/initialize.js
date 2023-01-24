@@ -129,14 +129,8 @@ push number three go
 call list two d new go
 store board go
 
-function tic tac toe go
-call tic tac toe instructions go
-call tic tac toe board new go
-local board go
-store board go
-call listen go
-local move go
-store move go
+function tic tac toe move convert go
+input move go
 push move go
 call string digit go
 local move number go
@@ -155,5 +149,17 @@ push number three go
 call mod go
 local move column go
 store move column go
+
+function tic tac toe listen move go
+call listen go
+local move go
+store move go
+
+function tic tac toe go
+call tic tac toe instructions go
+call tic tac toe board new go
+local board go
+store board go
+
 
 `)
