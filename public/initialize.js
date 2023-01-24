@@ -304,6 +304,8 @@ call range each go
     call on each go
 
 function tic tac toe cpu choice get go
+input board go
+
 
 function tic tac toe go
 call tic tac toe board new go
@@ -332,6 +334,7 @@ call if else go
     push choice go
     push number 1 go
     call tic tac toe board set go
+    puhs board go
     call tic tac toe cpu choice get go
     back go
 
