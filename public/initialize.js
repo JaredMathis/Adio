@@ -133,7 +133,11 @@ push y go
 call list get go
 local row go
 store row go
-
+push row go
+push x go
+call list get go
+output item go
+store item go
 
 function tic tac toe board new go
 output board go
