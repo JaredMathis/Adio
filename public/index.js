@@ -381,8 +381,6 @@ function process_try() {
     if (buffer.length === 0) {
         return;
     }
-    console.log(JSON.stringify(buffer))
-    error('Invalid command ' + buffer.join(' '))
 }
 
 function commands_allowed_get() {
