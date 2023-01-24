@@ -295,6 +295,7 @@ push lambda go
 call range each go
     inner function lambda go
     input index go
+    local item go
 
 function tic tac toe go
 call tic tac toe board new go
