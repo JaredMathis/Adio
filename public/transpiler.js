@@ -1,8 +1,10 @@
 
 async function function_run(fn, inputs) {
-    let code = code_get(fn);
-    output(code);
-    eval_global(code)
+    for (let f of data.functions) {
+        let code = code_get(f);
+        output(code);
+        eval_global(code)
+    }
     const code2 = `${fn.name}(${inputs.map(i => code_expression_get(i.value)).join(', ')})`;
     output(code2);
     let result = await eval_global(code2)
