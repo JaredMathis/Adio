@@ -53,14 +53,14 @@ function code_expression_get(e) {
         let joined = (remaining).join(" ");
         value = `"${joined}"`;
     } else if (e[0] === 'number') {
-        value = remaining.map(r => string_to_digit(r)).join('')
+        value = remaining.map(r => string_digit(r)).join('')
     } else {
         value = list_to_identifier(e)
     }
     return value;
 }
 
-function string_to_digit(s) {
+function string_digit(s) {
     if (/\d+/.test(s)) {
         return parseInt(s, 10);
     }
