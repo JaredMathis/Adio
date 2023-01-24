@@ -78,7 +78,9 @@ let commands = [
         allowed: () => current.type === 'function',
         exec: () => {
             do {
-                current = parent_get(data, current)
+                let before = current;
+                current = parent_get(data, current);
+                console.log({current, before})
             } while (typeof current === typeof [])
         }
     },

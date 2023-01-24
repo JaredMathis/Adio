@@ -1,12 +1,15 @@
 
 function parent_get(root, item) {
     let result;
+    let found = false;
     traverse(root, (v) => {
         let {parent, node} = v;
         if (node === item) {
             result = parent;
+            found = true;
         }
     })
+    assert(found);
     return result;
 }
 
@@ -14,13 +17,15 @@ function traverse(root, for_each, stack) {
     if (!stack) {
         stack = [];
     }
-    for_each(root, stack[stack.length - 1]);
-    stack.push(root);
-    for (let key of Object.keys(root)) {
-        let node = root[key];
-        traverse(node, for_each, stack);
+    for_each({node:root, parent:stack[stack.length - 1]});
+    if (typeof root !== typeof '') {
+        stack.push(root);
+        for (let key of Object.keys(root)) {
+            let node = root[key];
+            traverse(node, for_each, stack);
+        }
+        stack.pop();
     }
-    stack.pop();
 }
 
 function list_prefix_is(list, prefix_candidate) {
