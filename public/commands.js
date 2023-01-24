@@ -198,7 +198,6 @@ let commands = [
         help:  `This command runs the function you say. If the function has inputs you will need to set those, first.`,
         allowed: () => true,
         exec: name => {
-            console.log({name})
             name = list_to_identifier(name)
             current = runner;
             current.function = function_get(name);

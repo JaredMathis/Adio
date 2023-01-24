@@ -139,6 +139,7 @@ function process_try() {
         }
         let first = list_first_remove(listen_resolves);
         first(n.remaining.join(' '));
+        return;
     }
 
     let help_index = buffer.indexOf('help');
