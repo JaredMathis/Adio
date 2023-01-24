@@ -296,8 +296,6 @@ function audio_speak(words) {
     }
     window.speechSynthesis.speak(msg);
     output('speaking ' + msg.text)
-
-    throw new Error('test error');
 }
 
 window.onerror  = function(message, source, lineno, colno, error) {
