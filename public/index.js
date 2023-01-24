@@ -150,6 +150,7 @@ function process_try() {
             if (n.next_go < 0) {
                 return;
             }
+            console.log(prefixes.concat(n.remaining).join(' '));
             c.exec(n.remaining);
             buffer = buffer.slice(n.next_go + 1);
             process_try();

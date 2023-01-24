@@ -64,7 +64,7 @@ call speak go
 
 function list new go
 output a go
-eval string a symbol equals symbol bracket open symbol bracket closed
+eval string a symbol equals symbol bracket open symbol bracket closed go
 
 function list of size go
 input size go

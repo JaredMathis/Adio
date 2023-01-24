@@ -68,7 +68,7 @@ let commands = [
             current = function_inner_get(name);
             if (!current) {
                 function_new(name);
-                previous.inner.push(current)
+                previous.inners.push(current)
             }
         }
     },
