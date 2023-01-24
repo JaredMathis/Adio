@@ -124,6 +124,10 @@ push result go
 push row go
 call list add go
 
+function list two d get go
+
+
+
 
 function tic tac toe board new go
 output board go
