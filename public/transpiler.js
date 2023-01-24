@@ -15,6 +15,7 @@ function code_get(fn) {
     return `async function ${fn.name}(${fn.inputs.map(i => i.name).join(', ')}) {
 let _args = [];
 let _result;
+${fn.locals.length === 0 ? "" : "let " + fn.locals.map(i => i.name).join(', ') + ";"}
 ${ !fn.output ? "" : `let ${fn.output.name};` }
 ${fn.steps.map(step => code_step_get(step)).join(`;
 `)}

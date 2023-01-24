@@ -155,12 +155,12 @@ function process_try() {
         let prefixes = string_split_by_whitespace(c.prefix);
         // console.log({prefixes,buffer})
         if (list_prefix_is(buffer, prefixes)) {
-            let n = next_go();
+            let n = next_go(prefixes);
             if (n.next_go < 0) {
                 return;
             }
             c.exec(n.remaining);
-            buffer = buffer.slice(next_go + 1);
+            buffer = buffer.slice(n.next_go + 1);
             process_try();
         }
     }
@@ -170,13 +170,13 @@ function process_try() {
     error('Invalid command: ' + buffer);
 }
 
-function next_go() {
+function next_go(prefixes) {
     let result = {};
     result.next_go = buffer.indexOf('go');
     if (result.next_go < 0) {
         return result;
     }
-    result.remaining = buffer.slice(prefixes.length, next_go);
+    result.remaining = buffer.slice((prefixes || []).length, result.next_go);
     return result;
 }
 

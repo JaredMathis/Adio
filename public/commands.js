@@ -110,6 +110,24 @@ let commands = [
         }
     },
     {
+        prefix: 'local',
+        help:  `This command creates a local variable with the name you say.`,
+        allowed: () => current.type === 'function',
+        exec: args => {
+            let name = list_to_identifier(args);
+            let input = {
+                type: 'local',
+                name,
+            };
+            for (let i of current.locals) {
+                if (i.name === name) {
+                    error(`Local ${name} already exists for function ${parent_get(data, current).name}`);
+                }
+            }
+            current.locals.push(input);
+        }
+    },
+    {
         prefix: 'push',
         help:  `This command sets the next argument for the next function call with the value you say.`,
         allowed: () => current.type === 'function',
