@@ -51,21 +51,38 @@ let commands = [
     },
     {
         prefix: 'input',
-        exec: name => {
-            name = list_to_identifier(name)
-            if (current.type !== 'function') {
-                error(`Cannot add input. Must be in function.`);
-            }
-            for (let i of current.inputs) {
-                if (i.name === name) {
-                    error(`Input ${name} already exists for function ${parent_get(data, current).name}`);
+        exec: args => {
+            if (current.type === 'runner') {
+                let input = {
+                    type: 'input',
+                    value: args,
+                };
+                current.inputs.push(input);
+                let expect = current.function.inputs.length;
+                let actual = current.inputs.length
+                if (expect < actual) {
+                    error(`Function ${current.function.name} expects ${expect} input; received ${actual}`)
+                } else {
+                    if (expect === actual) {
+                        function_run(current.function, current.inputs);
+                    }
                 }
+            } else {
+                let name = list_to_identifier(args);
+                let input = {
+                    type: 'input',
+                    name,
+                };
+                if (current.type !== 'function') {
+                    error(`Cannot add input. Must be in function.`);
+                }
+                for (let i of current.inputs) {
+                    if (i.name === name) {
+                        error(`Input ${name} already exists for function ${parent_get(data, current).name}`);
+                    }
+                }
+                current.inputs.push(input);
             }
-            let input = {
-                type: 'input',
-                name,
-            };
-            current.inputs.push(input);
         }
     },
     {
@@ -86,6 +103,19 @@ let commands = [
         }
     },
     {
+        prefix: 'eval',
+        exec: remaining => {
+            if (current.type !== 'function') {
+                error(`Cannot add eval. Must be in function.`);
+            }
+            let eval = {
+                type: 'eval',
+                value: remaining,
+            };
+            current.steps.push(eval);
+        }
+    },
+    {
         prefix: 'run function',
         exec: name => {
             name = list_to_identifier(name)
@@ -97,6 +127,59 @@ let commands = [
         }
     }
 ]
+
+function function_run(fn, inputs) {
+    eval_global(code_get(fn))
+    eval_global(`${fn.name}(${inputs.map(i => i.name).join(', ')})`)
+}
+
+function code_get(fn) {
+    return `function ${fn.name}(${fn.inputs.map(i => i.name).join(', ')}) {
+${fn.steps.map(step => code_step_get(step)).join(`;
+`)}
+}`;
+}
+
+function code_step_get(step) {
+    if (step.type === `eval`) {
+        let value;
+        assert(step.remaining[0] === 'string');
+        let remaining = step.remaining.slice(1);
+        let joined = apply_symbols(remaining).join("");
+        value = `"${joined}"`;
+        return `eval(${value})`
+    }
+}
+
+function apply_symbols(list) {
+    let result = [];
+    let symbol_is = false;
+    for (let item of list) {
+        if (item === 'symbol') {
+            symbol_is=  true;
+            continue;
+        }
+        let actual;
+        if (symbol_is) {
+            symbol_is = false;
+            actual = {
+                "plus": '+',
+                "equals": '=',
+            }[item]
+            if (typeof actual !== typeof '') {
+                error(`Symbol is invalid: ${item}`)
+            }
+        } else {
+            actual = item;
+        }
+        result.push(actual);
+    }
+    return result;
+}
+
+function eval_global(value) {
+    return (1, eval)(value);
+}
 
 function function_get(name) {
     for (let f of data.functions) {
