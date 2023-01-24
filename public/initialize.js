@@ -220,5 +220,8 @@ push string column go
 call property get go
 local choice column go
 store choice column go
-
+push board go
+push choice row go
+push choice column go
+call list 2 d get go
 `)
