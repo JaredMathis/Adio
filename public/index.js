@@ -77,7 +77,8 @@ let runner = {
 let commands = [
     {
         prefix: 'function',
-        help: `This command creates a function if it does not yet exist. Then it opens the function.`,
+        help: `This command creates a function with the name you say, if it does not yet exist. Then it opens the function.`,
+        allowed: () => true,
         exec: name => {
             name = list_to_identifier(name)
             current = function_get(name);
@@ -98,48 +99,50 @@ let commands = [
     },
     {
         prefix: 'input',
+        help:  `This command sets the next input for the function being ran to the value you say`,
+        allowed: () => current.type === 'runner',
         exec: args => {
-            if (current.type === 'runner') {
-                let input = {
-                    type: 'input',
-                    value: args,
-                };
-                current.inputs.push(input);
-                let expect = current.function.inputs.length;
-                let actual = current.inputs.length;
-                console.log({expect, actual})
-                if (expect < actual) {
-                    error(`Function ${current.function.name} expects ${expect} input; received ${actual}`)
-                } else {
-                    if (expect === actual) {
-                        function_run(current.function, current.inputs);
-                    }
-                }
+            let input = {
+                type: 'input',
+                value: args,
+            };
+            current.inputs.push(input);
+            let expect = current.function.inputs.length;
+            let actual = current.inputs.length;
+            console.log({expect, actual})
+            if (expect < actual) {
+                error(`Function ${current.function.name} expects ${expect} input; received ${actual}`)
             } else {
-                let name = list_to_identifier(args);
-                let input = {
-                    type: 'input',
-                    name,
-                };
-                if (current.type !== 'function') {
-                    error(`Cannot add input. Must be in function.`);
+                if (expect === actual) {
+                    function_run(current.function, current.inputs);
                 }
-                for (let i of current.inputs) {
-                    if (i.name === name) {
-                        error(`Input ${name} already exists for function ${parent_get(data, current).name}`);
-                    }
-                }
-                current.inputs.push(input);
             }
         }
     },
     {
+        prefix: 'input',
+        help:  `This command creates a function input with the name you say.`,
+        allowed: () => current.type === 'function',
+        exec: args => {
+            let name = list_to_identifier(args);
+            let input = {
+                type: 'input',
+                name,
+            };
+            for (let i of current.inputs) {
+                if (i.name === name) {
+                    error(`Input ${name} already exists for function ${parent_get(data, current).name}`);
+                }
+            }
+            current.inputs.push(input);
+        }
+    },
+    {
         prefix: 'output',
+        help:  `This command sets the function output with the name you say.`,
+        allowed: () => current.type === 'function',
         exec: name => {
             name = list_to_identifier(name)
-            if (current.type !== 'function') {
-                error(`Cannot set output. Must be in function.`);
-            }
             if (current.output) {
                 error(`Output ${name} already exists for function ${parent_get(data, current).name}`);
             }
@@ -152,10 +155,9 @@ let commands = [
     },
     {
         prefix: 'eval',
+        help:  `This command adds a step. You say the string to evaluate in JavaScript when this step is ran.`,
+        allowed: () => current.type === 'function',
         exec: remaining => {
-            if (current.type !== 'function') {
-                error(`Cannot add eval. Must be in function.`);
-            }
             let eval = {
                 type: 'eval',
                 value: remaining,
@@ -165,6 +167,8 @@ let commands = [
     },
     {
         prefix: 'run function',
+        help:  `This command runs the function you say. If the function has inputs you will need to set those, first.`,
+        allowed: () => true,
         exec: name => {
             name = list_to_identifier(name)
             current = runner;
@@ -173,10 +177,15 @@ let commands = [
             if (!current) {
                 error(`No function named ${name}`);
             }
+            if (current.function.inputs.length === 0) {
+                function_run(current.function, []);
+            }
         }
     },
     {
         prefix: 'say',
+        help:  `This command repeats back the words you say. This can be used to test the microphone and speaker.`,
+        allowed: () => true,
         exec: remaining => {
             audio_speak(remaining.join(' '));
         }
@@ -305,6 +314,9 @@ function assert(condition) {
 
 function process_try() {
     for (let c of commands) {
+        if (!c.allowed()) {
+            continue;
+        }
         let prefixes = string_split_by_whitespace(c.prefix);
         if (list_prefix_is(buffer, prefixes)) {
             let next_go = buffer.indexOf('go');
