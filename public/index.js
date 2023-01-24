@@ -313,10 +313,8 @@ function assert(condition) {
 }
 
 function process_try() {
-    for (let c of commands) {
-        if (!c.allowed()) {
-            continue;
-        }
+    let commands_allowed = commands.filter(c => c.allowed());
+    for (let c of commands_allowed) {
         let prefixes = string_split_by_whitespace(c.prefix);
         if (list_prefix_is(buffer, prefixes)) {
             let next_go = buffer.indexOf('go');
