@@ -336,6 +336,10 @@ call list 2 d each go
     input value go
     input col go
     input row go
+    call object new go
+    local a go
+    store a go
+    
     back go
 
 function tic tac toe cpu choice get go
