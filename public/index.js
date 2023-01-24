@@ -22,21 +22,52 @@ function process_audio(input_string) {
 let data = {
     functions: [],
 };
+let current;
 
 let commands = [
     {
         prefix: 'function',
         exec: function_name => {
-            let choice;
             for (let f of data.functions) {
                 if (f.name === function_name) {
-                    choice = f;
+                    current = f;
                 }
             }
-            if (!choice) {
-                data.functions.push({
+            if (!current) {
+                current = {
+                    type: 'function',
                     name: function_name,
-                })
+                    inputs: [
+                    ],
+                    steps: [
+                    ],
+                    inners: [
+                    ]
+                };
+                data.functions.push(current)
+            }
+        }
+    },
+    {
+        prefix: 'input',
+        exec: input_name => {
+            for (let i of current.inputs) {
+                if (i.name === input_name) {
+                    audio_speak(`Input ${input_name} already exists for function ${parent_get(data, current)}`);
+                }
+            }
+            if (!current) {
+                current = {
+                    type: 'function',
+                    name: function_name,
+                    inputs: [
+                    ],
+                    steps: [
+                    ],
+                    inners: [
+                    ]
+                };
+                data.functions.push(current)
             }
         }
     }
@@ -54,6 +85,30 @@ function process_try() {
             process_try();
         }
     }
+}
+
+function parent_get(root, item) {
+    let result;
+    traverse(root, (v) => {
+        let {parent, node} = v;
+        if (node === item) {
+            result = parent;
+        }
+    })
+    return result;
+}
+
+function traverse(root, for_each, stack) {
+    if (!stack) {
+        stack = [];
+    }
+    for_each(root, stack[stack.length - 1]);
+    stack.push(root);
+    for (let key of Object.keys(root)) {
+        let node = root[key];
+        traverse(node, for_each, stack);
+    }
+    stack.pop();
 }
 
 function list_prefix_is(list, prefix_candidate) {
