@@ -275,8 +275,26 @@ function log go
 input a go
 eval string console symbol dot log symbol parenthesis open a symbol parenthesis close go
 
+function list size get go
+input list go
+output size go
+push list go
+push string length go
+call property get go
+store size go
+
 function list each go
 input list go
+input on each go
+push list go
+call list size get go
+local size go
+store size go
+push size go
+push lambda go
+call range each go
+    inner function lambda go
+    input index go
 
 function tic tac toe go
 call tic tac toe board new go
