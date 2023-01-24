@@ -31,6 +31,11 @@ input b go
 output c go
 eval string c symbol equals a symbol divide b go
 
+function floor go
+input a go
+output b go
+eval string b symbol equals uppercase m lowercase a t h symbol dot floor symbol parenthesis open a symbol parenthesis close go
+
 function double go
 input a go
 output b go

@@ -87,24 +87,36 @@ function string_digit(s) {
 function apply_symbols(list) {
     let result = [];
     let symbol_is = false;
+    let symbol_prefix;
     for (let item of list) {
         if (item === 'symbol') {
-            symbol_is=  true;
+            symbol_is = true;
+            symbol_prefix = [];
             continue;
         }
         let actual;
         if (symbol_is) {
-            symbol_is = false;
+            symbol_prefix.push(item);
+            
+            if (item === 'parenthesis') {
+                continue;
+            }
+
             actual = {
+                "parenthesis open": '(',
+                "parenthesis close": ')',
                 "plus": '+',
                 "percent": '%',
                 "divide": '/',
                 "minus": '-',
                 "equals": '=',
-            }[item]
+                "dot": '.',
+            }[symbol_prefix.join(' ')]
             if (typeof actual !== typeof '') {
-                error(`Symbol is invalid: ${item}`)
+                error(`Symbol is invalid: ${symbol_prefix.join(' ')}`)
             }
+            
+            symbol_is = false;
         } else {
             actual = item;
         }
