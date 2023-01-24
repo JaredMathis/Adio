@@ -17,8 +17,17 @@ function process_audio(input_string) {
     process_try();
 }
 
-function process_try() {
+let commands = [
+    {
+        prefix: 'function',
+        exec: remaining => {
+            console.log(remaining);
+        }
+    }
+]
 
+function process_try() {
+    
 }
 
 let most_recent;
