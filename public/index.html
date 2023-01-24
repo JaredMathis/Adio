@@ -1,7 +1,9 @@
 
 <html>
     <head></head>
-    <body>
+    <body onload="
+        loaded1 = true;
+        document.getElementById('b').disabled = !loaded1 || !loaded2">
         <button id="b" onclick="
             audio_speak('started');
             document.getElementById('b').hidden = true;
@@ -10,12 +12,14 @@
         <button onclick="audio_speak(most_recent)" style="width:100%;height:10%">
             click to play most recent</button>
         <script>
-if ( 'speechSynthesis' in window ) {
-  speechSynthesis.cancel(); // removes anything 'stuck'
-  speechSynthesis.getVoices();
-  // Safari loads voices synchronously so now safe to enable
-  document.getElementById('b').disabled = false;
-}
+        let loaded1, loaded2
+        if ( 'speechSynthesis' in window ) {
+            speechSynthesis.cancel(); // removes anything 'stuck'
+            speechSynthesis.getVoices();
+            loaded2 = true;
+            // Safari loads voices synchronously so now safe to enable
+            document.getElementById('b').disabled = !loaded1 || !loaded2;
+        }
         </script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
         <script src="index.js"></script>

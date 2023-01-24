@@ -164,9 +164,11 @@ let commands = [
 
 function function_run(fn, inputs) {
     let code = code_get(fn);
-    console.log('here', code);
+    console.log(code);
     eval_global(code)
-    let result = eval_global(`${fn.name}(${inputs.map(i => code_expression_get(i.value)).join(', ')})`)
+    const code2 = `${fn.name}(${inputs.map(i => code_expression_get(i.value)).join(', ')})`;
+    console.log(code2);
+    let result = eval_global(code2)
     audio_speak(result);
 }
 
@@ -193,7 +195,11 @@ function code_expression_get(e) {
         let joined = apply_symbols(remaining).join("");
         value = `"${joined}"`;
     } else if (e[0] === 'number') {
-        value = remaining.map(r => string_to_digit(r))
+        if (/\d+/.test(remaining)) {
+            value = parseInt(remaining, 10);
+        } else {
+            value = remaining.map(r => string_to_digit(r))
+        }
     } else {
         error('Invalid expression type: ' + e[0]);
     }
@@ -269,7 +275,6 @@ function assert(condition) {
 function process_try() {
     for (let c of commands) {
         let prefixes = string_split_by_whitespace(c.prefix);
-        console.log(prefixes)
         if (list_prefix_is(buffer, prefixes)) {
             let next_go = buffer.indexOf('go');
             if (next_go < 0) {
