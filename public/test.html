@@ -1,0 +1,16 @@
+<html>
+    <head></head>
+    <body>
+        <button onclick="f()
+            " style="width:100%">
+            Test    
+        </button>
+        <script>
+            function f() {
+                let utter = new window.SpeechSynthesisUtterance("cat");
+                window.speechSynthesis.cancel();
+                window.speechSynthesis.speak(utter);
+            }
+        </script>
+    </body>
+</html>
