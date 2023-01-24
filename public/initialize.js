@@ -107,8 +107,16 @@ push result go
 push row go
 call list add go
 
+function tic tac toe board new go
+output board go
+push number three go
+push number three go
+call list two d new go
+store board go
+
 function tic tac toe go
 call tic tac toe instructions go
+call tic tac toe board new go
 call listen go
 local move go
 store move go
