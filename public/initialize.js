@@ -54,14 +54,6 @@ input a go
 output b go
 eval string b symbol equals a symbol plus a go
 
-function tic tac toe instructions go
-push words welcome to tic tac toe go
-call speak go
-push words it is your turn to move go
-call speak go
-push words to move choose a number from one to nine representing the cell you choose go
-call speak 
-
 function list new go
 output a go
 eval string a symbol equals symbol bracket open symbol bracket close go
@@ -175,6 +167,13 @@ call tic tac toe move convert go
 local converted go
 store converted go
 
+function tic tac toe instructions go
+push words welcome to tic tac toe go
+call speak go
+push words it is your turn to move go
+call speak go
+push words to move choose a number from one to nine representing the cell you choose go
+call speak go
 
 function tic tac toe go
 call tic tac toe instructions go
