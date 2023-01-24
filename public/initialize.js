@@ -71,7 +71,7 @@ function if else go
 input condition go
 input lambda if go
 input lambda else go
-eval string symbol parenthesis open async symbol parenthesis open symbol parenthesis close symbol equals symbol greater symbol brace open if symbol parenthesis open condition symbol parenthesis close symbol brace open await lambda_if symbol parenthesis open symbol parenthesis close symbol brace close else symbol brace open await lambda_else symbol parenthesis open symbol parenthesis close symbol brace close symbol brace close symbol parenthesis close symbol parenthesis open close symbol parenthesis close go
+eval string symbol parenthesis open async symbol parenthesis open symbol parenthesis close symbol equals symbol greater symbol brace open if symbol parenthesis open condition symbol parenthesis close symbol brace open await symbol space lambda_if symbol parenthesis open symbol parenthesis close symbol brace close else symbol brace open await symbol space lambda_else symbol parenthesis open symbol parenthesis close symbol brace close symbol brace close symbol parenthesis close symbol parenthesis open close symbol parenthesis close go
 
 function list add go
 input list go
