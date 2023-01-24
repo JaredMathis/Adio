@@ -84,6 +84,13 @@ input name go
 input value go
 eval string o symbol bracket open name symbol bracket close symbol equals value go
 
+function property get go
+input o go
+input name go
+eval string o symbol bracket open name symbol bracket close go
+output value go
+store value go
+
 function list set go
 input list go
 input name go
@@ -203,6 +210,7 @@ store board go
 call tic tac toe listen move go
 local choice go
 store choice go
+
 
 
 `)
