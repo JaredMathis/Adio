@@ -56,6 +56,7 @@ function word_normalize(w) {
         ['b', 'bee', 'be'],
         ['two', 'to', 'too'],
         ['four', 'for'],
+        ['go', 'yo'],
     ];
     for (let n of normies) {
         if (n.includes(w)) {
