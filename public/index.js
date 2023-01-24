@@ -39,15 +39,29 @@ function output(message) {
 let buffer = [];
 
 function process_audio(input_string) {
-    output('received: ' + input_string);
     let non_empty = string_split_by_whitespace(input_string);
     let filtered = list_string_non_empty(non_empty);
     let trimmed = filtered.map(f => f.trim('\n'));
     let lowered = trimmed.map(f => f.toLowerCase());
-    buffer.push(...lowered);
+    let normalized = lowered.map(l => word_normalize(l))
+    output('received: ' + normalized.join(' '));
+    buffer.push(...normalized);
 
     process_try();
     console.log({data})
+}
+
+function word_normalize(w) {
+    let normies = [
+        ['two', 'to', 'too'],
+        ['b', 'bee', 'be'],
+    ];
+    for (let n of normies) {
+        if (n.includes(w)) {
+            return n[0]
+        }
+    }
+    return w;
 }
 
 let data = {
@@ -214,7 +228,7 @@ function string_to_digit(s) {
     let lookup = [
         ['zero'], 
         ['one'], 
-        ['two', 'to', 'too'], 
+        ['two'], 
         ['three'], 
         ['four'], 
         ['five'], 
