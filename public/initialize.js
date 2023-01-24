@@ -300,7 +300,8 @@ call range each go
     push index go
     call property get go
     store item go
-
+    push item go
+    call on each go
 
 function tic tac toe go
 call tic tac toe board new go
