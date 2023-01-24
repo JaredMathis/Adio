@@ -29,6 +29,7 @@ let commands = [
     {
         prefix: 'function',
         exec: name => {
+            name = list_to_identifier(name)
             for (let f of data.functions) {
                 if (f.name === name) {
                     current = f;
@@ -52,6 +53,7 @@ let commands = [
     {
         prefix: 'input',
         exec: name => {
+            name = list_to_identifier(name)
             if (current.type !== 'function') {
                 error(`Cannot add input. Must be in function.`);
             }
@@ -70,6 +72,7 @@ let commands = [
     {
         prefix: 'output',
         exec: name => {
+            name = list_to_identifier(name)
             if (current.type !== 'function') {
                 error(`Cannot set output. Must be in function.`);
             }
@@ -94,10 +97,13 @@ let commands = [
                 data: remaining,
             };
             current.steps.push(eval);
-            
         }
     }
 ]
+
+function list_to_identifier(list) {
+    return list.join('_');
+}
 
 function error(message) {
     buffer.length = 0;
