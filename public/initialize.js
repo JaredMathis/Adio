@@ -301,7 +301,25 @@ call range each go
     call property get go
     store item go
     push item go
+    push index go
     call on each go
+
+function list 2 d each go
+input list go
+
+push list go
+push each row go
+call list each go
+    inner function each row go
+    input row go
+    input y go
+    push row go
+    call list each go
+        inner function each column go
+        input value go
+
+        back go
+    back go
 
 function tic tac toe available get go
 input board go
@@ -310,7 +328,6 @@ call list new go
 
 function tic tac toe cpu choice get go
 input board go
-
 
 function tic tac toe go
 call tic tac toe board new go
