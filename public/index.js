@@ -134,7 +134,7 @@ function function_run(fn, inputs) {
     let code = code_get(fn);
     console.log('here', code);
     eval_global(code)
-    let result = eval_global(`${fn.name}(${inputs.map(i => i.value).join(', ')})`)
+    let result = eval_global(`${fn.name}(${inputs.map(i => code_expression_get(i.value)).join(', ')})`)
     audio_speak(result);
 }
 
@@ -160,10 +160,22 @@ function code_expression_get(e) {
     if (e[0] === 'string') {
         let joined = apply_symbols(remaining).join("");
         value = `"${joined}"`;
+    } else if (e[0] === 'number') {
+        value = remaining.map(r => string_to_digit(r))
     } else {
         error('Invalid expression type: ' + e[0]);
     }
     return value;
+}
+
+function string_to_digit(s) {
+    let lookup = [['zero'], ['one'], ['two'], ['three'], ['four'], ['five'], ['six'], ['seven'], ['eight'], ['nine']]
+    for (let i = 0; i< lookup.length; i++) {
+        if (lookup[i].includes(s)) {
+            return i;
+        }
+    }
+    error('Invalid digit: ' + s);
 }
 
 function apply_symbols(list) {
