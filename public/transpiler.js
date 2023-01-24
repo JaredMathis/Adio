@@ -97,6 +97,8 @@ function apply_symbols(list) {
             symbol_is = false;
             actual = {
                 "plus": '+',
+                "percent": '%',
+                "divide": '/',
                 "minus": '-',
                 "equals": '=',
             }[item]

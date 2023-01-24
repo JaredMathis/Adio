@@ -19,6 +19,18 @@ push number one go
 call subtract go
 store b go
 
+function mod go
+input a go
+input b go
+output c go
+eval string c symbol equals a symbol percent b go
+
+function divide go
+input a go
+input b go
+output c go
+eval string c symbol equals a symbol divide b go
+
 function double go
 input a go
 output b go
