@@ -174,7 +174,7 @@ function tic tac toe board new go
 output board go
 push number three go
 push number three go
-call list two d new go
+call list 2 d new go
 store board go
 
 function tic tac toe move convert go
