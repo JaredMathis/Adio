@@ -134,7 +134,7 @@ function function_run(fn, inputs) {
     let code = code_get(fn);
     console.log('here', code);
     eval_global(code)
-    let result = eval_global(`${fn.name}(${inputs.map(i => i.name).join(', ')})`)
+    let result = eval_global(`${fn.name}(${inputs.map(i => i.value).join(', ')})`)
     audio_speak(result);
 }
 
@@ -149,13 +149,21 @@ ${ !fn.output ? "" : `return ${fn.output.name};` }
 
 function code_step_get(step) {
     if (step.type === `eval`) {
-        let value;
-        assert(step.value[0] === 'string');
-        let remaining = step.value.slice(1);
-        let joined = apply_symbols(remaining).join("");
-        value = `"${joined}"`;
+        let value = code_expression_get(step.value);
         return `eval(${value})`
     }
+}
+
+function code_expression_get(e) {
+    let value;
+    let remaining = e.slice(1);
+    if (e[0] === 'string') {
+        let joined = apply_symbols(remaining).join("");
+        value = `"${joined}"`;
+    } else {
+        error('Invalid expression type: ' + e[0]);
+    }
+    return value;
 }
 
 function apply_symbols(list) {
