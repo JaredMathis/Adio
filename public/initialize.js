@@ -222,6 +222,12 @@ call list 2 d get go
 output value go
 store value go
 
+function equals go 
+input a go
+input b go
+output c go
+eval string c symbol equals a symbol equals symbol equals b go
+
 function tic tac toe go
 call tic tac toe instructions go
 call tic tac toe board new go
@@ -235,4 +241,5 @@ push choice go
 call tic tac toe board get go
 local choice value go
 store choice value go
+
 `)
