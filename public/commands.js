@@ -58,6 +58,8 @@ let commands = [
                     name: name,
                     inputs: [
                     ],
+                    locals: [
+                    ],
                     steps: [
                     ],
                     inners: [
