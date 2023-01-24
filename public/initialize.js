@@ -382,7 +382,7 @@ call if else go
     push choice go
     push number 1 go
     call tic tac toe board set go
-    puhs board go
+    push board go
     call tic tac toe cpu choice get go
     back go
 
