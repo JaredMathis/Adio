@@ -73,6 +73,14 @@ let commands = [
         }
     },
     {
+        prefix: 'back',
+        help: `This command changes the current to the parent object`,
+        allowed: () => current.type === 'function',
+        exec: name => {
+            current = parent_get(data, current)
+        }
+    },
+    {
         prefix: 'input',
         help:  `This command sets the next input for the function being ran to the value you say`,
         allowed: () => current.type === 'runner',

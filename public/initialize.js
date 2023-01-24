@@ -287,6 +287,7 @@ push invalid go
 call if else go
     inner function valid go
     
+    back go
 
     inner function invalid go
 `)
