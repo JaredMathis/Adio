@@ -125,7 +125,9 @@ push row go
 call list add go
 
 function list two d get go
-
+input list go
+input y go
+input x go
 
 
 
