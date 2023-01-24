@@ -87,6 +87,7 @@ eval string o symbol bracket open name symbol bracket close symbol equals value 
 function property get go
 input o go
 input name go
+output value go
 eval string value symbol equals o symbol bracket open name symbol bracket close go
 
 function list set go
