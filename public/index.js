@@ -122,6 +122,7 @@ function error(message) {
 
 let listen_resolves = [];
 function listen() {
+    console.log('here list')
     return new Promise(resolve => listen_resolves.push(resolve));
 }
 
@@ -154,7 +155,6 @@ function process_try() {
     }
     for (let c of commands_allowed_get()) {
         let prefixes = string_split_by_whitespace(c.prefix);
-        // console.log({prefixes,buffer})
         if (list_prefix_is(buffer, prefixes)) {
             let n = next_go(prefixes);
             if (n.next_go < 0) {

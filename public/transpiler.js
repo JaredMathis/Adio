@@ -53,7 +53,7 @@ function code_expression_get(e) {
     } else if (e[0] === 'number') {
         value = remaining.map(r => string_to_digit(r)).join('')
     } else {
-        error('Invalid expression type: ' + e[0]);
+        value = list_to_identifier(e)
     }
     return value;
 }

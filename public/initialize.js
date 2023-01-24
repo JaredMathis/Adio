@@ -20,4 +20,6 @@ push words to move choose a number from one to nine representing the cell you ch
 call speak go
 call listen go
 store move go
+push move go
+call speak go
 `)
