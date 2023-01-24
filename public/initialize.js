@@ -211,6 +211,10 @@ call tic tac toe listen move go
 local choice go
 store choice go
 
-
+push choice go
+push string row go
+call property get go
+local choice row go
+store choice row go
 
 `)
