@@ -14,6 +14,7 @@ async function function_run(fn, inputs) {
 function code_get(fn) {
     return `async function ${fn.name}(${fn.inputs.map(i => i.name).join(', ')}) {
 let _args = [];
+let _result;
 ${ !fn.output ? "" : `let ${fn.output.name};` }
 ${fn.steps.map(step => code_step_get(step)).join(`;
 `)}
@@ -31,7 +32,10 @@ function code_step_get(step) {
         return `_args.push(${value})`
     }
     if (step.type === `call`) {
-        return `await ${step.name}(..._args);_args.length = 0`
+        return `result = await ${step.name}(..._args);_args.length = 0`
+    }
+    if (step.type === `store`) {
+        return `${step.name} = result`
     }
     error('invalid step: ' + step);
 }
