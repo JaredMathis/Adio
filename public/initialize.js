@@ -73,7 +73,6 @@ local move number go
 store move number go
 push move number go
 call subtract one go
-store move number go
-push move number go
-call speak go
+local move number less go
+store move number less go
 `)
