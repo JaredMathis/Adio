@@ -11,6 +11,14 @@ input b go
 output c go
 eval string c symbol equals a symbol minus b go
 
+function subtract one go
+input a go
+output b go
+push a go
+push number one go
+call subtract go
+store b go
+
 function double go
 input a go
 output b go
@@ -25,6 +33,9 @@ push words to move choose a number from one to nine representing the cell you ch
 call speak go
 call listen go
 local move go
+store move go
+push move go
+call subtract one go
 store move go
 push move go
 call speak go
