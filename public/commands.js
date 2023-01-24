@@ -78,6 +78,7 @@ let commands = [
         allowed: () => current.type === 'function',
         exec: () => {
             current = parent_get(data, current)
+            current = parent_get(data, current)
         }
     },
     {
