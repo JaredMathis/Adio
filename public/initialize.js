@@ -175,11 +175,13 @@ call tic tac toe move convert go
 local converted go
 store converted go
 
+
 function tic tac toe go
 call tic tac toe instructions go
 call tic tac toe board new go
 local board go
 store board go
+call tic tac toe listen move go
 
 
 `)
