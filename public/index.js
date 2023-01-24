@@ -123,7 +123,6 @@ let commands = [
             if (!current) {
                 error(`No function named ${name}`);
             }
-            current = [];
         }
     }
 ]
@@ -185,11 +184,13 @@ function eval_global(value) {
 }
 
 function function_get(name) {
+    let result;
     for (let f of data.functions) {
         if (f.name === name) {
-            current = f;
+            result = f;
         }
     }
+    return result;
 }
 
 function list_to_identifier(list) {
