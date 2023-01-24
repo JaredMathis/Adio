@@ -98,7 +98,7 @@ push columns go
 call range go
 local columns range go
 store columns range go
-call for each go
+call list each go
 inner function lambda go
 
 function tic tac toe go
