@@ -17,6 +17,7 @@ function process_audio(input_string) {
     buffer.push(...lowered);
 
     process_try();
+    console.log({data})
 }
 
 let data = {
@@ -44,6 +45,7 @@ let commands = [
                     inners: [
                     ]
                 };
+                data.functions.push(current)
             }
         }
     },
@@ -79,6 +81,20 @@ let commands = [
                 name,
             };
             current.output = output;
+        }
+    },
+    {
+        prefix: 'eval',
+        exec: remaining => {
+            if (current.type !== 'function') {
+                error(`Cannot add eval. Must be in function.`);
+            }
+            let eval = {
+                type: 'eval',
+                data: remaining,
+            };
+            current.steps.push(eval);
+            
         }
     }
 ]
