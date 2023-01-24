@@ -113,7 +113,7 @@ push result go
 push undefined go
 call list add go
 
-function list two d new go
+function list 2 d new go
 input row count go
 input column count go
 output result go
@@ -131,7 +131,7 @@ push result go
 push row go
 call list add go
 
-function list two d get go
+function list 2 d get go
 input list go
 input y go
 input x go
@@ -145,6 +145,21 @@ push x go
 call list get go
 output item go
 store item go
+
+function list 2 d set go
+input list go
+input y go
+input x go
+input value go
+push list go
+push y go
+call list get go
+local row go
+store row go
+push row go
+push x go
+push value go
+call list set go
 
 function tic tac toe board new go
 output board go
@@ -222,6 +237,26 @@ call list 2 d get go
 output value go
 store value go
 
+function tic tac toe board set go
+input board go
+input choice go
+input value go
+push choice go
+push string row go
+call property get go
+local choice row go
+store choice row go
+push choice go
+push string column go
+call property get go
+local choice column go
+store choice column go
+push board go
+push choice row go
+push choice column go
+push value go
+call list 2 d set go
+
 function equals go 
 input a go
 input b go
@@ -250,6 +285,8 @@ push unoccupied go
 push valid go
 push invalid go
 call if else go
-inner function valid go
-inner function invalid go
+    inner function valid go
+    
+
+    inner function invalid go
 `)
