@@ -140,8 +140,10 @@ function function_run(fn, inputs) {
 
 function code_get(fn) {
     return `function ${fn.name}(${fn.inputs.map(i => i.name).join(', ')}) {
+${ !fn.output ? "" : `let ${fn.output.name};` }
 ${fn.steps.map(step => code_step_get(step)).join(`;
 `)}
+${ !fn.output ? "" : `return ${fn.output.name};` }
 }`;
 }
 
