@@ -6,7 +6,7 @@ function function_run(fn, inputs) {
     const code2 = `${fn.name}(${inputs.map(i => code_expression_get(i.value)).join(', ')})`;
     output(code2);
     let result = eval_global(code2)
-    audio_speak(result);
+    speak(result);
 }
 
 function code_get(fn) {

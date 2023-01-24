@@ -23,7 +23,7 @@ let commands = [
                 }
             }
 
-            audio_speak(match.help);
+            speak(match.help);
         }
     },
     {
@@ -33,7 +33,7 @@ let commands = [
         exec: () => {
             let available = commands_allowed_get().map(c => c.prefix);
             available.sort();
-            audio_speak(`The following commands are available: ` + available.join('. '))
+            speak(`The following commands are available: ` + available.join('. '))
         }
     },
     {
@@ -42,7 +42,7 @@ let commands = [
         allowed: () => true,
         exec: () => {
             data.functions.sort((a,b) => a.name - b.name);
-            audio_speak(`The following functions exist: ` + data.functions.map(f => f.name).join('. '))
+            speak(`The following functions exist: ` + data.functions.map(f => f.name).join('. '))
         }
     },
     {
@@ -108,6 +108,18 @@ let commands = [
         }
     },
     {
+        prefix: 'push',
+        help:  `This command sets the next argument for the next function call with the value you say.`,
+        allowed: () => current.type === 'function',
+        exec: value => {
+            let step = {
+                type: 'push',
+                value,
+            };
+            current.steps.push(step);
+        }
+    },
+    {
         prefix: 'output',
         help:  `This command sets the function output with the name you say.`,
         allowed: () => current.type === 'function',
@@ -140,6 +152,7 @@ let commands = [
         help:  `This command runs the function you say. If the function has inputs you will need to set those, first.`,
         allowed: () => true,
         exec: name => {
+            console.log({name})
             name = list_to_identifier(name)
             current = runner;
             current.function = function_get(name);
@@ -157,7 +170,7 @@ let commands = [
         help:  `This command repeats back the words you say. This can be used to test the microphone and speaker.`,
         allowed: () => true,
         exec: remaining => {
-            audio_speak(remaining.join(' '));
+            speak(remaining.join(' '));
         }
     }
 ]

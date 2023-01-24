@@ -117,10 +117,10 @@ function process_try() {
     let cancel = buffer.indexOf('cancel');
     if (cancel >= 0) {
         buffer = buffer.slice(cancel + 1);
-        alert('canceld')
     }
     for (let c of commands_allowed_get()) {
         let prefixes = string_split_by_whitespace(c.prefix);
+        // console.log({prefixes,buffer})
         if (list_prefix_is(buffer, prefixes)) {
             let next_go = buffer.indexOf('go');
             if (next_go < 0) {
@@ -135,6 +135,7 @@ function process_try() {
     if (buffer.length === 0) {
         return;
     }
+    error('Invalid command: ' + buffer);
 }
 
 function commands_allowed_get() {
