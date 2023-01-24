@@ -6,15 +6,19 @@ if (annyang) {
     annyang.start();
 }
 
-let previous = [];
+let buffer = [];
 
 function process_audio(input_string) {
     output('processing ' + input_string);
     let non_empty = string_split_by_space(input_string);
     let filtered = list_string_non_empty(non_empty);
-    previous.push(...filtered);
+    buffer.push(...filtered);
 
-    audio_speak(filtered.join(' '));
+    process_try();
+}
+
+function process_try() {
+
 }
 
 let most_recent;
