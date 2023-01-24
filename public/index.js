@@ -69,12 +69,22 @@ function word_normalize(w) {
 let data = {
     functions: [],
 };
-let current;
+let current = {};
 let runner = {
     type: 'runner',
 }
 
 let commands = [
+    {
+        prefix: 'list commands',
+        help: `This command lists the commands that are available right now`,
+        allowed: () => true,
+        exec: () => {
+            let available = commands_allowed_get().map(c => c.prefix);
+            available.sort();
+            audio_speak(`The following commands are available: ` + available.join(' and '))
+        }
+    },
     {
         prefix: 'function',
         help: `This command creates a function with the name you say, if it does not yet exist. Then it opens the function.`,
@@ -313,8 +323,13 @@ function assert(condition) {
 }
 
 function process_try() {
-    let commands_allowed = commands.filter(c => c.allowed());
-    for (let c of commands_allowed) {
+    let help_index = buffer.indexOf('help');
+    if (help_index >= 0) {
+        audio_speak(`Say list commands go to hear a list of commands you can say right now.`);
+        buffer.length = 0;
+        return;
+    }
+    for (let c of commands_allowed_get()) {
         let prefixes = string_split_by_whitespace(c.prefix);
         if (list_prefix_is(buffer, prefixes)) {
             let next_go = buffer.indexOf('go');
@@ -332,6 +347,10 @@ function process_try() {
     }
     console.log(JSON.stringify(buffer))
     error('Invalid command ' + buffer.join(' '))
+}
+
+function commands_allowed_get() {
+    return commands.filter(c => c.allowed());
 }
 
 function parent_get(root, item) {
