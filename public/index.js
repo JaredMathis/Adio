@@ -19,11 +19,25 @@ function process_audio(input_string) {
     process_try();
 }
 
+let data = {
+    functions: [],
+};
+
 let commands = [
     {
         prefix: 'function',
-        exec: remaining => {
-            console.log(remaining);
+        exec: function_name => {
+            let choice;
+            for (let f of data.functions) {
+                if (f.name === function_name) {
+                    choice = f;
+                }
+            }
+            if (!choice) {
+                data.functions.push({
+                    name: function_name,
+                })
+            }
         }
     }
 ]
@@ -36,6 +50,8 @@ function process_try() {
             let next_go = buffer.indexOf('go');
             let remaining = buffer.slice(prefixes.length, next_go);
             c.exec(remaining);
+            buffer = buffer.slice(next_go + 1);
+            process_try();
         }
     }
 }
