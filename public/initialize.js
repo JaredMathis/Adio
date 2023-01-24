@@ -230,4 +230,7 @@ store board go
 call tic tac toe listen move go
 local choice go
 store choice go
+push board go
+push choice go
+call tic tac toe board get go
 `)
