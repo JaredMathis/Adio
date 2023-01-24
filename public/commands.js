@@ -120,6 +120,19 @@ let commands = [
         }
     },
     {
+        prefix: 'call',
+        help:  `This command calls the function you say with any arguments you've supplied from push.`,
+        allowed: () => current.type === 'function',
+        exec: name => {
+            name = list_to_identifier(name)
+            let step = {
+                type: 'call',
+                name,
+            };
+            current.steps.push(step);
+        }
+    },
+    {
         prefix: 'output',
         help:  `This command sets the function output with the name you say.`,
         allowed: () => current.type === 'function',
