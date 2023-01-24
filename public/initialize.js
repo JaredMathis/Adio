@@ -181,6 +181,7 @@ call tic tac toe board new go
 local board go
 store board go
 call tic tac toe listen move go
-
+local choice go
+store choice go
 
 `)
