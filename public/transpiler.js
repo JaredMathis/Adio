@@ -22,6 +22,8 @@ ${ !fn.output ? "" : `let ${fn.output.name};` }
 ${fn.steps.map(step => code_step_get(step)).join(`;
 `)}
 ${ !fn.output ? "" : `return ${fn.output.name};` }
+${ fn.inners.length === 0 ? '' : fn.inners.map(i => code_get(i)).join(`
+`) }
 }`;
 }
 
