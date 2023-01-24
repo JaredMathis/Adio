@@ -68,10 +68,11 @@ function words_split(words) {
 function word_normalize(w) {
     let normies = [
         ['b', 'bee', 'be'],
-        ['two', 'to', 'too', '2'],
-        ['four', 'for'],
         ['go', 'yo'],
-        ['one', '1'],
+        ['0', 'zero'],
+        ['1', 'one', 'won'],
+        ['2', 'two', 'to', 'too'],
+        ['4', 'four', 'for'],
     ];
     for (let n of normies) {
         if (n.includes(w)) {
