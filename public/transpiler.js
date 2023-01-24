@@ -30,7 +30,7 @@ ${ fn.inners.length === 0 ? '' : fn.inners.map(i => code_get(i)).join(`
 function code_step_get(step) {
     if (step.type === `eval`) {
         let value = code_expression_get(step.value);
-        return `eval(${value})`
+        return `await eval(${value})`
     }
     if (step.type === `push`) {
         let value = code_expression_get(step.value);
