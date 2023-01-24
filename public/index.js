@@ -6,24 +6,28 @@ if (annyang) {
     annyang.start();
 }
 
+let output_audio_pauses = false
 
 let most_recent;
 
 function audio_speak(words) {
-    output('paused audio')
+    if (output_audio_pauses)
+        output('paused audio')
     annyang.abort();
 
     var msg = new SpeechSynthesisUtterance();
     msg.text = most_recent = words;
 
     msg.onend = (event) => {
-        output('finished ' + words);
-        output('starting audio');
+        if (output_audio_pauses)
+            output('finished ' + words);
+        if (output_audio_pauses)
+            output('starting audio');
         annyang.start();
     }
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(msg);
-    output('speaking ' + msg.text)
+    output('speaking: ' + msg.text)
 }
 
 function output(message) {
@@ -35,7 +39,7 @@ function output(message) {
 let buffer = [];
 
 function process_audio(input_string) {
-    output('processing ' + input_string);
+    output('received: ' + input_string);
     let non_empty = string_split_by_whitespace(input_string);
     let filtered = list_string_non_empty(non_empty);
     let trimmed = filtered.map(f => f.trim('\n'));
@@ -164,10 +168,10 @@ let commands = [
 
 function function_run(fn, inputs) {
     let code = code_get(fn);
-    console.log(code);
+    output(code);
     eval_global(code)
     const code2 = `${fn.name}(${inputs.map(i => code_expression_get(i.value)).join(', ')})`;
-    console.log(code2);
+    output(code2);
     let result = eval_global(code2)
     audio_speak(result);
 }
@@ -207,7 +211,7 @@ function code_expression_get(e) {
 }
 
 function string_to_digit(s) {
-    let lookup = [['zero'], ['one'], ['two'], ['three'], ['four'], ['five'], ['six'], ['seven'], ['eight'], ['nine']]
+    let lookup = [['zero'], ['one'], ['two', 'to', 'too'], ['three'], ['four'], ['five'], ['six'], ['seven'], ['eight'], ['nine']]
     for (let i = 0; i< lookup.length; i++) {
         if (lookup[i].includes(s)) {
             return i;
