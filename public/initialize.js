@@ -303,7 +303,7 @@ call range each go
     push item go
     call on each go
 
-function tic tac toe availabe get go
+function tic tac toe available get go
 
 
 function tic tac toe cpu choice get go
