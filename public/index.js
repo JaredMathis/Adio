@@ -122,6 +122,7 @@ let commands = [
             name = list_to_identifier(name)
             current = runner;
             current.function = function_get(name);
+            current.inputs = [];
             if (!current) {
                 error(`No function named ${name}`);
             }
