@@ -339,7 +339,17 @@ call list 2 d each go
     call object new go
     local a go
     store a go
-
+    push a go
+    push string row go
+    push row go
+    call property set go
+    push a go
+    push string column go
+    push column go
+    call property set go
+    push available go
+    push a go
+    call list add go
     back go
 
 function tic tac toe cpu choice get go
