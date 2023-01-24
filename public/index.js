@@ -77,6 +77,7 @@ let runner = {
 let commands = [
     {
         prefix: 'function',
+        help: `This command creates a function if it does not yet exist. Then it opens the function.`,
         exec: name => {
             name = list_to_identifier(name)
             current = function_get(name);
