@@ -154,6 +154,17 @@ push number three go
 call mod go
 local move column go
 store move column go
+call object new go
+output converted go
+store converted go
+push converted go
+push string row go
+push move row go
+call property set go
+push converted go
+push string column go
+push move column go
+call property set go
 
 function tic tac toe listen move go
 call listen go
@@ -161,6 +172,8 @@ local move go
 store move go
 push move go
 call tic tac toe move convert go
+local converted go
+store converted go
 
 function tic tac toe go
 call tic tac toe instructions go
