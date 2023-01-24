@@ -202,14 +202,9 @@ call speak go
 push words to move choose a number from one to nine representing the cell you choose go
 call speak go
 
-function tic tac toe go
-call tic tac toe instructions go
-call tic tac toe board new go
-local board go
-store board go
-call tic tac toe listen move go
-local choice go
-store choice go
+function tic tac toe board get go
+input board go
+input choice go
 push choice go
 push string row go
 call property get go
@@ -224,4 +219,15 @@ push board go
 push choice row go
 push choice column go
 call list 2 d get go
+output value go
+store value go
+
+function tic tac toe go
+call tic tac toe instructions go
+call tic tac toe board new go
+local board go
+store board go
+call tic tac toe listen move go
+local choice go
+store choice go
 `)
