@@ -60,11 +60,15 @@ call speak go
 push words it is your turn to move go
 call speak go
 push words to move choose a number from one to nine representing the cell you choose go
-call speak go
+call speak 
 
 function list new go
 output a go
 eval string a symbol equals symbol bracket open symbol bracket close go
+
+function object new go
+output a go
+eval string a symbol equals symbol brace open symbol brace close go
 
 function range each go
 input limit go
@@ -121,6 +125,7 @@ store row go
 push result go
 push row go
 call list add go
+
 
 function tic tac toe board new go
 output board go
