@@ -67,10 +67,9 @@ output a go
 eval string a symbol equals symbol bracket open symbol bracket close go
 
 function range each go
-input a go
+input limit go
 input lambda go
-output b go
-eval string for symbol parenthesis open let symbol space symbol underscore i symbol equals zero symbol semicolon symbol underscore i symbol less b symbol semicolon symbol underscore i symbol plus symbol plus symbol brace open await symbol space lambda symbol parenthesis open symbol underscore i symbol parenthesis close symbol brace close
+eval string for symbol parenthesis open let symbol space symbol underscore i symbol equals zero symbol semicolon symbol underscore i symbol less limit symbol semicolon symbol underscore i symbol plus symbol plus symbol brace open await symbol space lambda symbol parenthesis open symbol underscore i symbol parenthesis close symbol brace close
 
 function list of size go
 input size go
