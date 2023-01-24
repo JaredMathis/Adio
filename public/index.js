@@ -129,8 +129,11 @@ let commands = [
 ]
 
 function function_run(fn, inputs) {
-    eval_global(code_get(fn))
-    eval_global(`${fn.name}(${inputs.map(i => i.name).join(', ')})`)
+    let code = code_get(fn);
+    console.log('here', code);
+    eval_global(code)
+    let result = eval_global(`${fn.name}(${inputs.map(i => i.name).join(', ')})`)
+    audio_speak(result);
 }
 
 function code_get(fn) {
@@ -208,7 +211,6 @@ function assert(condition) {
 function process_try() {
     for (let c of commands) {
         let prefixes = string_split_by_whitespace(c.prefix);
-        console.log({buffer, prefixes})
         if (list_prefix_is(buffer, prefixes)) {
             let next_go = buffer.indexOf('go');
             let remaining = buffer.slice(prefixes.length, next_go);
