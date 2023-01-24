@@ -307,4 +307,8 @@ call if else go
     back go
 
     inner function invalid go
+    push words that choice is already taken go
+    call speak go
+    push words please choose another choice one through nine go
+    call speak go
 `)
