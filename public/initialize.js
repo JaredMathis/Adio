@@ -263,6 +263,10 @@ input b go
 output c go
 eval string c symbol equals a symbol equals symbol equals b go
 
+function log go
+input a go
+eval string console symbol dot log symbol parenthesis open a symbol parenthesis close go
+
 function tic tac toe go
 call tic tac toe instructions go
 call tic tac toe board new go
