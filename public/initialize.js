@@ -534,6 +534,7 @@ function tic tac toe winner check go
 input board go
 input player go
 local target sum go
+
 push number 3 go
     inner function on each horizontal go
     input index go
@@ -549,6 +550,8 @@ push number 3 go
         back go
     push include if go
     call tic tac toe board sum go
+    local sum go
+    store sum go
     back go
 push on each horizontal go
 call range each go
