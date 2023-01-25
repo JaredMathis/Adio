@@ -84,11 +84,17 @@ let commands = [
         prefix: 'back',
         help: `This command changes the current to the parent object`,
         allowed: () => current.type === 'function',
-        exec: () => {
+        exec: async () => {
             do {
                 let before = current;
                 current_set(parent_get(data, current));
             } while (Array.isArray(current))
+
+            if (current.type === 'function') {
+                await speak(`Back to function: ` + identifier_to_string(current.name));
+            } else {
+                await speak(`Back to home.`);
+            }
         }
     },
     {
