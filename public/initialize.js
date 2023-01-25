@@ -352,6 +352,7 @@ call list 2 d each go
     push board go
     push a go
     push on unoccupied go
+    push no operation go
     call tic tac toe if unoccupied go
         inner function on unoccupied go
         push available go
@@ -388,6 +389,8 @@ push unoccupied go
 push on unoccupied go
 push on occupied go
 call if else go
+
+function no operation go
 
 function tic tac toe go
 call tic tac toe board new go
