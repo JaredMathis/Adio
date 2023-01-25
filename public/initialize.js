@@ -658,6 +658,7 @@ local winner go
 store winner go
 output game over go
 push winner go
+call identity go
 store game over go
 push game over go
 push on game over go
