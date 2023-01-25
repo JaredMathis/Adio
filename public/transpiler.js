@@ -69,7 +69,7 @@ function code_expression_get(e) {
     return value;
 }
 
-function string_digit(s) {
+function string_digit(s, on_invalid) {
     if (/\d+/.test(s)) {
         return parseInt(s, 10);
     }
@@ -90,7 +90,11 @@ function string_digit(s) {
             return i;
         }
     }
-    error('Invalid digit: ' + s);
+    if (on_invalid) {
+        return on_invalid();
+    } else {
+        error('Invalid digit: ' + s);
+    }
 }
 
 function apply_symbols(list) {

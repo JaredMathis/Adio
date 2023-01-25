@@ -178,7 +178,9 @@ store board go
 
 function tic tac toe move convert go
 input move go
+input on invalid go
 push move go
+push on invalid go
 call string digit go
 local move number go
 store move number go
@@ -213,6 +215,10 @@ call listen go
 local move go
 store move go
 push move go
+push on invalid go
+    inner function on invalid go
+    call function tic tac toe listen move go
+    back go
 call tic tac toe move convert go
 output converted go
 store converted go
