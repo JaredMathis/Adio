@@ -331,6 +331,7 @@ output available go
 call list new go
 store available go
 push board go
+push on each go
 call list 2 d each go
     inner function on each go
     input value go
@@ -358,7 +359,8 @@ local a go
 push board go
 call tic tac toe available get go
 store a go
-log a go
+push a go
+call log go
 
 function tic tac toe go
 call tic tac toe board new go
