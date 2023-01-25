@@ -552,6 +552,12 @@ push number 3 go
     call tic tac toe board sum go
     local sum go
     store sum go
+    local sum equals target go
+    push sum go
+    push target sum go
+    call equals go
+    store sum equals target go
+    
     back go
 push on each horizontal go
 call range each go
