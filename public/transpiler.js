@@ -69,7 +69,7 @@ function code_expression_get(e) {
     return value;
 }
 
-function string_digit(s, on_invalid) {
+function string_digit(s, undefined_on_invalid) {
     if (/\d+/.test(s)) {
         return parseInt(s, 10);
     }
@@ -90,8 +90,8 @@ function string_digit(s, on_invalid) {
             return i;
         }
     }
-    if (on_invalid) {
-        return on_invalid();
+    if (undefined_on_invalid) {
+        return;
     } else {
         error('Invalid digit: ' + s);
     }

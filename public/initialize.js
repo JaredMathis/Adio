@@ -185,6 +185,7 @@ function tic tac toe move convert go
 input move go
 input on invalid go
 push move go
+push true go
 call string digit go
 local move number go
 store move number go
