@@ -145,8 +145,9 @@ function process_try() {
     if (cancel >= 0) {
         buffer = buffer.slice(cancel + 1);
     }
+    const commands = commands_allowed_get();
     let complete = false;
-    for (let c of commands_allowed_get()) {
+    for (let c of commands) {
         let prefixes = string_split_by_whitespace(c.prefix);
         if (list_prefix_is(buffer, prefixes)) {
             let n = next_go(prefixes);
