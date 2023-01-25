@@ -123,7 +123,33 @@ function list_first_remove(list) {
     return first;
 }
 
-function process_try() {
+let muted = false;
+
+async function process_try() {
+    if (muted) {
+        let unmute_index = buffer.indexOf('unmute');
+        if (unmute_index >= 0) {
+            buffer = buffer.slice(unmute_index + 1);
+            muted = false;
+            await speak('unmuted')
+            await process_try();
+            return;
+        } else {
+            buffer.length = 0;
+            return;
+        }
+        
+    } else {
+        let mute_index = buffer.indexOf('mute');
+        if (mute_index >= 0) {
+            buffer = buffer.slice(0, mute_index + 1);
+            muted = true;
+            await speak('muted')
+            await process_try();
+            return;
+        }
+    }
+
     if (listen_resolves.length > 0) {
         let n = next_go();
         if (n.next_go < 0) {
@@ -137,16 +163,16 @@ function process_try() {
 
     let help_index = buffer.indexOf('help');
     if (help_index >= 0) {
-        speak(`Say, "list commands go" to hear a list of commands you can say right now. Use the "info" command to get information about a command.`);
+        await speak(`Say, "list commands go" to hear a list of commands you can say right now. Use the "info" command to get information about a command.`);
         buffer.length = 0;
         return;
     }
     let cancel = buffer.indexOf('cancel');
     if (cancel >= 0) {
         buffer = buffer.slice(cancel + 1);
-        speak("buffer cleared");
+        await speak("buffer cleared");
     }
-    if (process_command_next(commands_allowed_get())) {
+    if (await process_command_next(commands_allowed_get())) {
         return;
     }
     if (buffer.length === 0) {
@@ -155,7 +181,7 @@ function process_try() {
     error('Invalid command: ' + buffer);
 }
 
-function process_command_next(commands) {
+async function process_command_next(commands) {
     let complete = false;
     for (let c of commands) {
         let prefixes = string_split_by_whitespace(c.prefix);
@@ -168,7 +194,7 @@ function process_command_next(commands) {
             console.log(prefixes.concat(n.remaining).join(' '));
             c.exec(n.remaining);
             buffer = buffer.slice(n.next_go + 1);
-            process_try();
+            await process_try();
         }
     }
     return complete;
