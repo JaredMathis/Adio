@@ -144,6 +144,7 @@ function process_try() {
     let cancel = buffer.indexOf('cancel');
     if (cancel >= 0) {
         buffer = buffer.slice(cancel + 1);
+        speak("buffer cleared");
     }
     if (process_command_next(commands_allowed_get())) {
         return;
