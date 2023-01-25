@@ -268,8 +268,9 @@ let commands = [
         help:  `This command creates a local variable with the name you say.`,
         allowed: () => current.type === 'function',
         exec: async args => {
+            let before = args;
             let name = list_to_identifier(args);
-            let input = {
+            let local = {
                 type: 'local',
                 name,
             };
@@ -278,7 +279,8 @@ let commands = [
                     await error(`Local ${name} already exists for function ${parent_get(data, current).name}`);
                 }
             }
-            current.locals.push(input);
+            current.locals.push(local);
+            await speak(`Added local: ` + before)
         }
     },
     {
@@ -331,11 +333,11 @@ let commands = [
             if (current.output) {
                 error(`Output ${name} already exists for function ${parent_get(data, current).name}`);
             }
-            let output = {
+            let step = {
                 type: 'output',
                 name,
             };
-            current.output = output;
+            current.output = step;
             await speak(`Added step: ${step.type} ${step.name}`);
         }
     },
@@ -344,11 +346,11 @@ let commands = [
         help:  `This command adds a step. You say the string to evaluate in JavaScript when this step is ran.`,
         allowed: () => current.type === 'function',
         exec: async remaining => {
-            let eval = {
+            let step = {
                 type: 'eval',
                 value: remaining,
             };
-            current.steps.push(eval);
+            current.steps.push(step);
             await speak(`Added step: ${step.type} ${step.value}`);
         }
     },
