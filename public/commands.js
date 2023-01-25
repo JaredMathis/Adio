@@ -81,7 +81,11 @@ let commands = [
         exec: async (remaining) => {
             let n = await string_digit(remaining.join(' '));
             let s = current.steps[n - 1];
-            await speak(`Step ${n} is ${s.type} ${s.value || s.name}`);
+            if (!s) {
+                await speak(`There is no step ${n}.`);
+            } else {
+                await speak(`Step ${n} is ${s.type} ${s.value || s.name}`);
+            }
         }
     },
     {
