@@ -145,11 +145,12 @@ let commands = [
         help: `This command deletes the locals of the current function`,
         allowed: () => current.type === 'function',
         exec: async () => {
-            if (current.locals.length === 0) {
+            let before =current.locals.length 
+            if (before === 0) {
                 await speak('There are no locals.');
             } else {
-                current.locals.length === 0;
-                await speak(`Locals cleared`)
+                current.locals.length = 0;
+                await speak(`locals cleared. Count was ${before}`)
             }
         }
     },
