@@ -493,6 +493,7 @@ call tic tac toe board new go
 local board go
 store board go
 call tic tac toe instructions go
+push board go
 call tic tac toe player move go
 
 function tic tac toe player move go
