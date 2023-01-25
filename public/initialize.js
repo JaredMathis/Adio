@@ -455,11 +455,16 @@ push words the computer chose cell go
 call identity go
 store message go
 push message go
+push string symbol space go
+call add go
+store message go
+push message go
 push a n go
 call add go
 store message go
 push message go
 call speak go
+tic tac toe player move go
 
 function tic tac toe if unoccupied go
 input board go
@@ -488,6 +493,10 @@ call tic tac toe board new go
 local board go
 store board go
 call tic tac toe instructions go
+call tic tac toe player move go
+
+function tic tac toe player move go
+input board go
 call tic tac toe listen move go
 local choice go
 store choice go
