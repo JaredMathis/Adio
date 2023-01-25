@@ -528,7 +528,11 @@ call list 2 d each go
     input value go
     input column go
     input row go
-
+    push row go
+    push column go
+    call include if go
+    local include go
+    store include go
     back go
 
 function tic tac toe go
