@@ -53,7 +53,7 @@ let commands = [
             let before = name;
             name = list_to_identifier(name);
             let next = function_get(name);
-            if (!current) {
+            if (!next) {
                 await speak(`Function does not exist. Creating.`);
                 next = function_new(name);
                 data.functions.push(current);
@@ -245,14 +245,14 @@ let commands = [
 ]
 
 function function_new(name) {
-    current_set({
+    return {
         type: 'function',
         name: name,
         inputs: [],
         locals: [],
         steps: [],
         inners: []
-    });
+    };
 }
 
 function function_inner_get(name) {
