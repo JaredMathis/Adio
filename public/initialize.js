@@ -531,6 +531,7 @@ result game over go
 store game over go
 
 function tic tac toe winner check go
+input board go
 
 
 function tic tac toe board sum go
