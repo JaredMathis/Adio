@@ -406,6 +406,18 @@ output sum go
 push number one go
 call identity go
 store sum go
+push choice go
+push string row go
+call property get go
+local row go
+store row go
+push choice go
+push string column go
+call property get go
+local column go
+store column go
+local product go
+
 
 function tic tac toe cpu choice get go
 input board go
