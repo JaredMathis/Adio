@@ -56,7 +56,7 @@ let commands = [
             if (!next) {
                 await speak(`Function does not exist. Creating.`);
                 next = function_new(name);
-                data.functions.push(current);
+                data.functions.push(next);
             }
             current_set(next);
             await speak(`Opened function ` + before);
