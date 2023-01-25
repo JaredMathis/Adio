@@ -77,8 +77,22 @@ let commands = [
             if (before === 0) {
                 await speak('There are no steps.');
             } else {
-                current.inners.length = 0;
+                current.steps.length = 0;
                 await speak(`Steps deleted. Count was ${before}`)
+            }
+        }
+    },
+    {
+        prefix: 'delete last step',
+        help: `This command delete the last step of the current function`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            let before = current.steps.length;
+            if (before === 0) {
+                await speak('There are no steps.');
+            } else {
+                let last = current.steps.pop();
+                await speak(`Step deleted: ${step_to_string(last)}`)
             }
         }
     },
@@ -126,7 +140,7 @@ let commands = [
             if (!s) {
                 await speak(`There is no step ${n}.`);
             } else {
-                await speak(`Step ${n} is ${s.type} ${s.value || s.name}`);
+                await speak(`Step ${n} is ${step_to_string(s)}`);
             }
         }
     },
@@ -401,6 +415,10 @@ let commands = [
         }
     }
 ]
+
+function step_to_string(s) {
+    return `${s.type} ${s.value || s.name}`;
+}
 
 function function_new(name) {
     return {
