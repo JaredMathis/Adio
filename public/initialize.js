@@ -644,6 +644,10 @@ call range each go
 function debug go
 eval string one symbol semicolon debugger go
 
+function not go
+input a go
+eval string symbol bang a go
+
 function tic tac toe game over check go
 input board go
 input player go

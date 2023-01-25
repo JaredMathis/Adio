@@ -150,6 +150,7 @@ function apply_symbols(list) {
                 "greater": '>',
                 "semicolon": ';',
                 "star": '*',
+                "bang": '!',
             }[symbol_prefix.join(' ')]
             if (typeof actual !== typeof '') {
                 error(`Symbol is invalid: ${symbol_prefix.join(' ')}`)
