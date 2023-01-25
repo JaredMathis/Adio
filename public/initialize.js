@@ -780,7 +780,10 @@ push on game over go
     push message go
     call speak go
     back go
-push no operation go
+push on no game over go
+    inner function on no game over go
+    
+    back go
 call if else go
 
 function tic tac toe board sum go
