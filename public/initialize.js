@@ -618,6 +618,10 @@ call multiply go
 local target sum go
 store target sum go
 push number 3 go
+call identity go
+local board size go
+store board size go
+push board size go
 push on each horizontal go
     inner function on each horizontal go
     input index go
@@ -637,7 +641,7 @@ push on each horizontal go
     call tic tac toe board check go
     back go
 call range each go
-push number 3 go
+push board size go
 push on each vertical go
     inner function on each vertical go
     input index go
@@ -657,7 +661,7 @@ push on each vertical go
     call tic tac toe board check go
     back go
 call range each go
-push number 3 go
+push board size go
 push on each diagonal down go
     inner function on each diagonal down go
     input index go
@@ -677,7 +681,7 @@ push on each diagonal down go
     call tic tac toe board check go
     back go
 call range each go
-push number 3 go
+push board size go
 push on each diagonal up go
     inner function on each diagonal up go
     input index go
@@ -686,7 +690,16 @@ push on each diagonal up go
         inner function include if go
         input row go
         input column go
+        push board size go
+        call subtract one go
+        local board size less go
+        store board size less go
+        push board size less go
         push column go
+        call subtract go
+        local difference go
+        store difference go
+        push difference go
         push row go
         call equals go
         output column equals row go
