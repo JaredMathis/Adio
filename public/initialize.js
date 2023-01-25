@@ -217,7 +217,7 @@ store move go
 push move go
 push on invalid go
     inner function on invalid go
-    call function tic tac toe listen move go
+    call tic tac toe listen move go
     back go
 call tic tac toe move convert go
 output converted go
@@ -570,6 +570,9 @@ function tic tac toe winner check go
 input board go
 input player go
 output winner go
+push false go
+call identity go
+store winner go
 push number three go
 push player go
 call multiply go
