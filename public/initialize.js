@@ -603,6 +603,9 @@ push player go
 call tic tac toe winner check go
 local winner go
 store winner go
+push winner go
+call speak go
+
 
 function tic tac toe board sum go
 input board go
