@@ -532,6 +532,17 @@ store game over go
 
 function tic tac toe winner check go
 input board go
+push number 3 go
+    inner function on each horizontal go
+    push board go
+        inner function include if go
+        back go
+    push include if go
+    call tic tac toe board sum go
+    back go
+push on each horizontal go
+call range each go
+
 
 
 function tic tac toe board sum go
