@@ -314,6 +314,7 @@ call list each go
     input row go
     input y go
     push row go
+    push each column go
     call list each go
         inner function each column go
         input value go
@@ -331,9 +332,9 @@ output available go
 call list new go
 store available go
 push board go
-push on each go
+push on each cell go
 call list 2 d each go
-    inner function on each go
+    inner function on each cell go
     input value go
     input column go
     input row go
