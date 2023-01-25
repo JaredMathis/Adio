@@ -513,6 +513,7 @@ call tic tac toe if unoccupied go
     push number one go
     call tic tac toe board set go
     push board go
+    push number one go
     call tic tac toe game over check go
     push board go
     call tic tac toe cpu move go
@@ -600,7 +601,7 @@ input board go
 input player go
 push board go
 push player go
-tic tac toe winner check go
+call tic tac toe winner check go
 
 
 function tic tac toe board sum go
