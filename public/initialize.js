@@ -772,10 +772,6 @@ push on game over go
 push no operation go
 call if else go
 
-
-
-
-
 function tic tac toe board sum go
 input board go
 input include if go
