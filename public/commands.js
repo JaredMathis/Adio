@@ -66,7 +66,7 @@ let commands = [
         prefix: 'inner function',
         help: `This command creates an inner function with the name you say, if it does not yet exist. Then it opens the function. You must be in a function to create an inner function.`,
         allowed: () => current.type === 'function',
-        exec: name => {
+        exec: async name => {
             let before = name;
             name = list_to_identifier(name);
             let previous = current;
@@ -101,12 +101,13 @@ let commands = [
         prefix: 'input',
         help:  `This command sets the next input for the function being ran to the value you say`,
         allowed: () => current.type === 'runner',
-        exec: args => {
+        exec: async args => {
             let input = {
                 type: 'input',
                 value: args,
             };
             current.inputs.push(input);
+            await speak(`Input set to ` + args);
             let expect = current.function.inputs.length;
             let actual = current.inputs.length;
             console.log({expect, actual})
@@ -124,7 +125,7 @@ let commands = [
         help:  `This command creates a function input with the name you say.`,
         allowed: () => current.type === 'function',
         exec: async args => {
-            let before = name;
+            let before = args;
             let name = list_to_identifier(args);
             let input = {
                 type: 'input',
@@ -233,11 +234,13 @@ let commands = [
             current_set(runner);
             current.function = function_get(name);
             if (!current.function) {
-                error(`No function named: ${before}`);
+                await error(`No function named: ${before}`);
             }
             current.inputs = [];
             if (current.function.inputs.length === 0) {
                 await function_run(current.function, []);
+            } else {
+                await speak(`Input count is ${current.function.inputs.length}`);
             }
         }
     },
