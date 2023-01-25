@@ -69,6 +69,20 @@ let commands = [
         }
     },
     {
+        prefix: 'delete all steps',
+        help: `This command deletes all the steps of the current function`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            let before = current.steps.length;
+            if (before === 0) {
+                await speak('There are no steps.');
+            } else {
+                current.inners.length = 0;
+                await speak(`Steps deleted. Count was ${before}`)
+            }
+        }
+    },
+    {
         prefix: 'current output',
         help: `This command lists the ouptut of the current function`,
         allowed: () => current.type === 'function',
