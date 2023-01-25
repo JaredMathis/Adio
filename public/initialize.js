@@ -361,14 +361,46 @@ call list 2 d each go
         back go
     back go
 
+function random go
+output value go
+eval string value symbol equals uppercase m lowercase a t h symbol dot random symbol parenthesis open symbol parenthesis close go
+
+function multiply go
+output value go
+input a go
+input c go
+eval string value symbol equals a symbol star b go
+
+function list random item go
+input list go
+local size go
+push list go
+call list size get go
+store size go
+local product go
+call random go
+local r go
+store r go
+push r go
+push size go
+call multiply go
+store product go
+push product go
+call floor go
+local index go
+store index go
+push list go
+push index go
+call list get go
+output item go
+store item go
+
 function tic tac toe cpu choice get go
 input board go
 local a go
 push board go
 call tic tac toe available get go
 store a go
-push a go
-call log go
 
 function tic tac toe if unoccupied go
 input board go

@@ -136,6 +136,7 @@ function apply_symbols(list) {
                 "less": '<',
                 "greater": '>',
                 "semicolon": ';',
+                "star": '*',
             }[symbol_prefix.join(' ')]
             if (typeof actual !== typeof '') {
                 error(`Symbol is invalid: ${symbol_prefix.join(' ')}`)
