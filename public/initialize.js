@@ -417,7 +417,7 @@ call property get go
 local column go
 store column go
 local product go
-
+push number three go
 
 function tic tac toe cpu choice get go
 input board go
