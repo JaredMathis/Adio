@@ -489,14 +489,6 @@ call if else go
 
 function no operation go
 
-function tic tac toe go
-call tic tac toe board new go
-local board go
-store board go
-call tic tac toe instructions go
-push board go
-call tic tac toe player move go
-
 function tic tac toe player move go
 input board go
 call tic tac toe listen move go
@@ -521,4 +513,12 @@ call tic tac toe if unoccupied go
     call speak go
     push words please choose another choice one through nine go
     call speak go
+
+function tic tac toe go
+call tic tac toe board new go
+local board go
+store board go
+call tic tac toe instructions go
+push board go
+call tic tac toe player move go
 `)
