@@ -192,7 +192,7 @@ store move number go
 push move number go
 call number is go
 local move number valid go
-
+store move number valid go
 
 push move number go
 call subtract one go
