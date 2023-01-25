@@ -70,7 +70,7 @@ let commands = [
             name = list_to_identifier(name);
             let previous = current;
             let next = function_inner_get(name);
-            if (!current) {
+            if (!next) {
                 next = function_new(name);
                 previous.inners.push(current)
             }

@@ -10,7 +10,12 @@ let output_audio_pauses = false
 
 let most_recent;
 
+let sound = true;
+
 function speak(words) {
+    if (!sound) {
+        return Promise.resolve();
+    }
     return new Promise((resolve) => {
         if (output_audio_pauses)
             output('paused audio')
@@ -41,7 +46,7 @@ function output(message) {
 
 let buffer = [];
 
-function process_audio(input_string) {
+async function process_audio(input_string) {
     let non_empty = string_split_by_whitespace(input_string);
     let filtered = list_string_non_empty(non_empty);
     let trimmed = filtered.map(f => f.trim('\n'));
@@ -52,7 +57,7 @@ function process_audio(input_string) {
 
     buffer.push(...normalized);
 
-    process_try();
+    await process_try();
     console.log({data})
 }
 

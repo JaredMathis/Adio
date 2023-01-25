@@ -1,3 +1,5 @@
+sound = false;
+
 process_audio(`
 
 function add go
@@ -743,4 +745,6 @@ store board go
 push board go
 call tic tac toe player move go
 
-`)
+`).then(() => {
+    sound = true;
+});
