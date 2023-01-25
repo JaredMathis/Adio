@@ -46,6 +46,15 @@ let commands = [
         }
     },
     {
+        prefix: 'list all inner functions',
+        help: `This command lists the inner functions of the current function that exist`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            current.inners.sort((a,b) => a.name - b.name);
+            await speak(`The following inner functions exist: ` + current.inners.map(f => f.name).join('. '))
+        }
+    },
+    {
         prefix: 'function',
         help: `This command creates a function with the name you say, if it does not yet exist. Then it opens the function.`,
         allowed: () => true,
