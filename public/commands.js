@@ -93,7 +93,7 @@ let commands = [
             if (current.type === 'function') {
                 await speak(`Back to function: ` + identifier_to_string(current.name));
             } else {
-                await speak(`Back to home.`);
+                await speak(`Back to home`);
             }
         }
     },
@@ -240,7 +240,7 @@ let commands = [
             if (current.function.inputs.length === 0) {
                 await function_run(current.function, []);
             } else {
-                await speak(`Input count is ${current.function.inputs.length}`);
+                await speak(`Input count is: ${current.function.inputs.length}`);
             }
         }
     },
