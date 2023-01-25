@@ -533,6 +533,10 @@ call list 2 d each go
     call include if go
     local include go
     store include go
+    push include go
+    push add to sum go
+    push no operation go
+    call if else go
     back go
 
 function tic tac toe go
