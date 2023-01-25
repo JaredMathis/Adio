@@ -464,7 +464,8 @@ call add go
 store message go
 push message go
 call speak go
-tic tac toe player move go
+push board go
+call tic tac toe player move go
 
 function tic tac toe if unoccupied go
 input board go

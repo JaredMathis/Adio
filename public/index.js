@@ -129,6 +129,7 @@ function process_try() {
         if (n.next_go < 0) {
             return;
         }
+        buffer = buffer.slice(n.next_go + 1);
         let first = list_first_remove(listen_resolves);
         first(n.remaining.join(' '));
         return;
