@@ -601,6 +601,7 @@ call multiply go
 local target sum go
 store target sum go
 push number 3 go
+push on each horizontal go
     inner function on each horizontal go
     input index go
     push board go
@@ -618,7 +619,6 @@ push number 3 go
     push if sum equals target go
     call tic tac toe board check go
     back go
-push on each horizontal go
 call range each go
     inner function if sum equals target go
     push true go
