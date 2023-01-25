@@ -676,7 +676,7 @@ push on game over go
         store player name go
         back go
     push on else go    
-        inner function on if go
+        inner function on else go
         push words the computer go
         call identity go
         store player name go
@@ -690,7 +690,7 @@ push on game over go
     push words won the game go
     call add go
     store message go
-    speak message go
+    call speak message go
     back go
 push no operation go
 call if else go
