@@ -106,9 +106,9 @@ function list_to_identifier(list) {
     return list.join('_');
 }
 
-function error(message) {
+async function error(message) {
     buffer.length = 0;
-    speak(message);
+    await speak(message);
     throw new Error(message);
 }
 

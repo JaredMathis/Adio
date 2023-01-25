@@ -4,7 +4,7 @@ let commands = [
         prefix: 'info',
         help: `This command says information about how to use the command. For example, to get info about the info command say info info go. You say info twice because the first info calls the command and the second info is the name of the command to get information about.`,
         allowed: () => true,
-        exec: remaining => {
+        exec: async remaining => {
             let available = commands_allowed_get();
             available.sort(function (a,b) {
                 return a.prefix - b.prefix;
@@ -17,32 +17,32 @@ let commands = [
             let global_match = list_find(commands, predicate);
             if (!match) {
                 if (global_match) {
-                    error('This command exists, but is not available right now.');
+                    await error('This command exists, but is not available right now.');
                 } else {
-                    error('This command does not exist.')
+                    await error('This command does not exist.')
                 }
             }
 
-            speak(match.help);
+            await speak(match.help);
         }
     },
     {
         prefix: 'list commands',
         help: `This command lists the commands that are available right now`,
         allowed: () => true,
-        exec: () => {
+        exec: async () => {
             let available = commands_allowed_get().map(c => c.prefix);
             available.sort();
-            speak(`The following commands are available: ` + available.join('. '))
+            await speak(`The following commands are available: ` + available.join('. '))
         }
     },
     {
         prefix: 'list all functions',
         help: `This command lists the functions that exist`,
         allowed: () => true,
-        exec: () => {
+        exec: async () => {
             data.functions.sort((a,b) => a.name - b.name);
-            speak(`The following functions exist: ` + data.functions.map(f => f.name).join('. '))
+            await speak(`The following functions exist: ` + data.functions.map(f => f.name).join('. '))
         }
     },
     {
@@ -53,6 +53,7 @@ let commands = [
             name = list_to_identifier(name)
             current = function_get(name);
             if (!current) {
+                speak()
                 function_new(name);
                 data.functions.push(current)
             }
@@ -221,11 +222,11 @@ let commands = [
             }
             current.inputs = [];
             if (current.function.inputs.length === 0) {
-                speak('running function: ' + before);
+                await speak('running function: ' + before);
                 await function_run(current.function, []);
-                speak('function completed: ' + before);
+                await speak('function completed: ' + before);
             } else {
-                speak('cannot run; arguments required for function: ' + before);
+                await speak('cannot run; arguments required for function: ' + before);
             }
         }
     },
@@ -233,8 +234,8 @@ let commands = [
         prefix: 'say',
         help:  `This command repeats back the words you say. This can be used to test the microphone and speaker.`,
         allowed: () => true,
-        exec: remaining => {
-            speak(remaining.join(' '));
+        exec: async remaining => {
+            await speak(remaining.join(' '));
         }
     }
 ]
