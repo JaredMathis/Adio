@@ -79,9 +79,9 @@ let commands = [
         help: `This command says the specified step`,
         allowed: () => current.type === 'function',
         exec: async (remaining) => {
-            let n = parseInt(remaining, 10);
+            let n = await string_digit(remaining.join(' '));
             let s = current.steps[n - 1];
-            await speak(`Step ${n} is ${s.type} ${s.value}`);
+            await speak(`Step ${n} is ${s.type} ${s.value || s.name}`);
         }
     },
     {
