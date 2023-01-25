@@ -630,7 +630,7 @@ call list 2 d each go
     push add to sum go
     push no operation go
     call if else go
-        inner function add to sum
+        inner function add to sum go
         push value go
         push sum go
         call add go
