@@ -533,6 +533,7 @@ store game over go
 function tic tac toe board check go
 input board go
 input include if go
+input target sum go
 input if sum equals target go
 push board go
 push include if go
@@ -571,6 +572,7 @@ push number 3 go
         output row equals index go
         store row equals index go
         back go
+    push target sum go
     push if sum equals target go
     call tic tac toe board check go
     back go
