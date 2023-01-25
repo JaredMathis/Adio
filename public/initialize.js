@@ -549,8 +549,16 @@ call tic tac toe if unoccupied go
     push board go
     push number one go
     call tic tac toe game over check go
-    push board go
-    call tic tac toe cpu move go
+    local game over go
+    store game over go
+    push game over go
+    push no operation go
+    push on game not over go
+        inner function on game not over go
+        push board go
+        call tic tac toe cpu move go
+        back go
+    call if else go
     back go
 
     inner function invalid go
@@ -644,8 +652,6 @@ push player go
 call tic tac toe winner check go
 local winner go
 store winner go
-push winner go
-call speak go
 
 
 function tic tac toe board sum go
