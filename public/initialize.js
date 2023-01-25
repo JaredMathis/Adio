@@ -659,6 +659,10 @@ store winner go
 output game over go
 push winner go
 store game over go
+local message go
+push words player go
+call identity go
+store message go
 
 
 function tic tac toe board sum go
