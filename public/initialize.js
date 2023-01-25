@@ -401,6 +401,7 @@ output b go
 eval string b symbol equals a go
 
 function tic tac toe move deconvert go
+input board go
 input choice go
 output sum go
 push number one go
@@ -426,7 +427,7 @@ push sum go
 call add go
 store sum go
 push sum go
-push col go
+push column go
 call add go
 store sum go
 
