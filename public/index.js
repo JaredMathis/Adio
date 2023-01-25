@@ -145,7 +145,16 @@ function process_try() {
     if (cancel >= 0) {
         buffer = buffer.slice(cancel + 1);
     }
-    const commands = commands_allowed_get();
+    if (process_command_next(commands_allowed_get())) {
+        return;
+    }
+    if (buffer.length === 0) {
+        return;
+    }
+    error('Invalid command: ' + buffer);
+}
+
+function process_command_next(commands) {
     let complete = false;
     for (let c of commands) {
         let prefixes = string_split_by_whitespace(c.prefix);
@@ -161,13 +170,7 @@ function process_try() {
             process_try();
         }
     }
-    if (complete) {
-        return;
-    }
-    if (buffer.length === 0) {
-        return;
-    }
-    error('Invalid command: ' + buffer);
+    return complete;
 }
 
 function next_go(prefixes) {
