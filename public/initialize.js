@@ -517,7 +517,10 @@ call tic tac toe if unoccupied go
 function tic tac toe board sum go
 input board go
 input include if go
-
+push number zero go
+input sum go
+call identity go
+store sum go
 push board go
 push on each go
 call list 2 d each go
