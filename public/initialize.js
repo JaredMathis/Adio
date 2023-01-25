@@ -524,7 +524,11 @@ push available go
 call list size go
 local available count go
 store available count go
-
+push available count go
+push number zero go
+call equals go
+result game over go
+store game over go
 
 function tic tac toe winner check go
 
