@@ -1,9 +1,5 @@
 process_audio(`
 
-function test go
-push number negative one go
-call log go
-
 function add go
 input a go
 input b go

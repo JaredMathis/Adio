@@ -191,8 +191,8 @@ async function process_command_next(commands) {
                 complete = true;
                 break;
             }
-            console.log(prefixes.concat(n.remaining).join(' '));
-            c.exec(n.remaining);
+            // console.log(prefixes.concat(n.remaining).join(' '));
+            await c.exec(n.remaining);
             buffer = buffer.slice(n.next_go + 1);
             await process_try();
         }
