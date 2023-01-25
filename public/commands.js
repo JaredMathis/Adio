@@ -212,19 +212,20 @@ let commands = [
         help:  `This command runs the function you say. If the function has inputs you will need to set those, first.`,
         allowed: () => true,
         exec: async name => {
+            let before = name;
             name = list_to_identifier(name)
             current = runner;
             current.function = function_get(name);
             if (!current.function) {
-                error(`No function named ${name}`);
+                error(`No function named: ${before}`);
             }
             current.inputs = [];
             if (current.function.inputs.length === 0) {
-                speak('running function ' + name);
+                speak('running function: ' + before);
                 await function_run(current.function, []);
-                speak('function completed ' + name);
+                speak('function completed: ' + before);
             } else {
-                speak('cannot run function because it requires arguments');
+                speak('cannot run; arguments required for function: ' + before);
             }
         }
     },

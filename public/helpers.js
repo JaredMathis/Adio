@@ -45,6 +45,10 @@ function string_split_by_whitespace(s) {
     return s.split(/\s/)
 }
 
+function identifier_to_string(i) {
+    return i.split('_').join(' ')
+}
+
 function assert(condition) {
     if (!condition) {
         throw new Error('error assert ');
