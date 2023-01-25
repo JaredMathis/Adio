@@ -533,8 +533,12 @@ store game over go
 function tic tac toe winner check go
 input board go
 input player go
+output winner go
+push number three go
+push player go
+call multiply go
 local target sum go
-
+store target sum go
 push number 3 go
     inner function on each horizontal go
     input index go
@@ -557,7 +561,14 @@ push number 3 go
     push target sum go
     call equals go
     store sum equals target go
-    
+    push if sum equals target go
+        local function if sum equals target go
+        push true go
+        call identity go
+        store winner go
+        back go
+    push no operation go
+    call if else go
     back go
 push on each horizontal go
 call range each go
