@@ -418,8 +418,19 @@ local column go
 store column go
 local product go
 push number three go
+push row go
+call multiply go
+store product go
+push product go
+push sum go
+call add go
+store sum go
+push sum go
+push col go
+call add go
+store sum go
 
-function tic tac toe cpu choice get go
+function tic tac toe cpu move go
 input board go
 local available go
 push board go
@@ -433,7 +444,8 @@ push board go
 push a go
 push number negative one go
 call tic tac toe board set go
-
+store choice
+tic tac toe move deconvert
 
 function tic tac toe if unoccupied go
 input board go
@@ -476,7 +488,7 @@ call tic tac toe if unoccupied go
     push number one go
     call tic tac toe board set go
     push board go
-    call tic tac toe cpu choice get go
+    call tic tac toe cpu move go
     back go
 
     inner function invalid go
