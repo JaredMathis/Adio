@@ -72,7 +72,7 @@ let commands = [
             let next = function_inner_get(name);
             if (!next) {
                 next = function_new(name);
-                previous.inners.push(current)
+                previous.inners.push(next)
             }
             current_set(next);
         }
