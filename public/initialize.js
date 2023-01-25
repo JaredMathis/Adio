@@ -515,6 +515,9 @@ call tic tac toe if unoccupied go
     call speak go
 
 function tic tac toe draw check go
+input board go
+push board go
+call tic tac toe available get go
 
 function tic tac toe winner check go
 
