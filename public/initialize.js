@@ -431,6 +431,14 @@ push column go
 call add go
 store sum go
 
+function list first go
+input list go
+push list go
+push number zero go
+call list get go
+output value go
+store value go
+
 function tic tac toe cpu move go
 input board go
 local available go
@@ -439,7 +447,7 @@ call tic tac toe available get go
 store available go
 local a go
 push available go
-call list random item go
+call list first go
 store a go
 push board go
 push a go
