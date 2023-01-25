@@ -537,6 +537,12 @@ call list 2 d each go
     push add to sum go
     push no operation go
     call if else go
+        inner function add to sum
+        push value go
+        push sum go
+        call add go
+        store sum go
+        back go
     back go
 
 function tic tac toe go
