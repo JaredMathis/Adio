@@ -145,18 +145,23 @@ function process_try() {
     if (cancel >= 0) {
         buffer = buffer.slice(cancel + 1);
     }
+    let complete = false;
     for (let c of commands_allowed_get()) {
         let prefixes = string_split_by_whitespace(c.prefix);
         if (list_prefix_is(buffer, prefixes)) {
             let n = next_go(prefixes);
             if (n.next_go < 0) {
-                return;
+                complete = true;
+                break;
             }
             console.log(prefixes.concat(n.remaining).join(' '));
             c.exec(n.remaining);
             buffer = buffer.slice(n.next_go + 1);
             process_try();
         }
+    }
+    if (complete) {
+        return;
     }
     if (buffer.length === 0) {
         return;
