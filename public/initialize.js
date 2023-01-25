@@ -8,6 +8,20 @@ input b go
 output c go
 eval string c symbol equals a symbol plus b go
 
+function add three things go
+input a go
+input b go
+input c go
+output d go
+push a go
+push b go
+call add go
+store d go
+push d go
+add c go
+call add go
+store d go
+
 function subtract go
 input a go
 input b go
