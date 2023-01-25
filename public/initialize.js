@@ -656,6 +656,9 @@ push player go
 call tic tac toe winner check go
 local winner go
 store winner go
+output game over go
+push winner go
+store game over go
 
 
 function tic tac toe board sum go
