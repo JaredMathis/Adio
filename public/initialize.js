@@ -782,7 +782,16 @@ push on game over go
     back go
 push on no game over go
     inner function on no game over go
-    
+    push board go
+    call tic tac toe draw check go    
+    store game over go
+    push game over go
+    push on draw go
+        inner function on draw go
+        push words the game is a draw go
+        call speak go
+        back go
+    push no operation go
     back go
 call if else go
 
