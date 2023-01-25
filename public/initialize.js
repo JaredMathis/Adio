@@ -1,4 +1,9 @@
 process_audio(`
+
+function test go
+push number negative one go
+call log go
+
 function add go
 input a go
 input b go
@@ -465,7 +470,6 @@ push number zero go
 call list get go
 output value go
 store value go
-
 
 function tic tac toe cpu move go
 input board go

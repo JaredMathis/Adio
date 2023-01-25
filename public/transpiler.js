@@ -63,7 +63,7 @@ function code_expression_get(e) {
         } else {
             factor = 1;
         }
-        value = remaining.map(r => string_digit(r)).join('')
+        value = remaining.map(r => string_digit(r)).join('') * factor
     } else {
         value = list_to_identifier(e)
     }
