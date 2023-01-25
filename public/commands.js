@@ -343,12 +343,13 @@ let commands = [
         prefix: 'eval',
         help:  `This command adds a step. You say the string to evaluate in JavaScript when this step is ran.`,
         allowed: () => current.type === 'function',
-        exec: remaining => {
+        exec: async remaining => {
             let eval = {
                 type: 'eval',
                 value: remaining,
             };
             current.steps.push(eval);
+            await speak(`Added step: ${step.type} ${step.value}`);
         }
     },
     {
