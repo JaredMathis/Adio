@@ -55,6 +55,19 @@ let commands = [
         }
     },
     {
+        prefix: 'delete all inner functions',
+        help: `This command delete all the inner functions of the current function`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            let before = current.inners.length;
+            if (before === 0) {
+                await speak('There are no inner functions.');
+            } else {
+                await speak(`Inner functions cleared. Count was ${before}`)
+            }
+        }
+    },
+    {
         prefix: 'current output',
         help: `This command lists the ouptut of the current function`,
         allowed: () => current.type === 'function',
