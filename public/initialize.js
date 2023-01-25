@@ -690,7 +690,7 @@ push on game over go
     push words won the game go
     call add go
     store message go
-    call speak message go
+    call speak go
     back go
 push no operation go
 call if else go
