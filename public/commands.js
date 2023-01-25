@@ -101,6 +101,19 @@ let commands = [
         }
     },
     {
+        prefix: 'delete all inputs',
+        help: `This command deletes the inputs of the current function`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            if (current.inputs.length === 0) {
+                await speak('There are no inputs.');
+            } else {
+                current.inputs.length === 0;
+                await speak(`Inputs cleared`)
+            }
+        }
+    },
+    {
         prefix: 'list all locals',
         help: `This command lists the locals of the current function`,
         allowed: () => current.type === 'function',
@@ -109,6 +122,19 @@ let commands = [
                 await speak('There are no locals.');
             } else {
                 await speak(`The following locals exist: ` + current.locals.map(i => i.name).join('. '))
+            }
+        }
+    },
+    {
+        prefix: 'delete all locals',
+        help: `This command deletes the locals of the current function`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            if (current.locals.length === 0) {
+                await speak('There are no locals.');
+            } else {
+                current.locals.length === 0;
+                await speak(`Locals cleared`)
             }
         }
     },
