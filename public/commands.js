@@ -68,11 +68,12 @@ let commands = [
         exec: name => {
             name = list_to_identifier(name);
             let previous = current;
-            current = function_inner_get(name);
+            let next = function_inner_get(name);
             if (!current) {
-                function_new(name);
+                next = function_new(name);
                 previous.inners.push(current)
             }
+            current_set(next);
         }
     },
     {
@@ -82,7 +83,7 @@ let commands = [
         exec: () => {
             do {
                 let before = current;
-                current = parent_get(data, current);
+                current_set(parent_get(data, current));
             } while (Array.isArray(current))
         }
     },
@@ -217,7 +218,7 @@ let commands = [
         exec: async name => {
             let before = name;
             name = list_to_identifier(name)
-            current = runner;
+            current_set(runner);
             current.function = function_get(name);
             if (!current.function) {
                 error(`No function named: ${before}`);
