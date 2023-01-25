@@ -668,7 +668,7 @@ push on game over go
     push player go
     push number one go
     call equals go
-    store player equals go
+    store player equals one go
     push player equals one go
     push on if go
         inner function on if go
