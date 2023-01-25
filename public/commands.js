@@ -67,6 +67,24 @@ let commands = [
         }
     },
     {
+        prefix: 'steps count',
+        help: `This command says the number of steps of the current function`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            await speak(`The steps count is: ` + current.steps.length)
+        }
+    },
+    {
+        prefix: 'step',
+        help: `This command says the specified step`,
+        allowed: () => current.type === 'function',
+        exec: async (remaining) => {
+            let n = parseInt(remaining, 10);
+            let s = current.steps[n];
+            await speak(`Step ${n} is ${s.type} ${s.value}`);
+        }
+    },
+    {
         prefix: 'list all inputs',
         help: `This command lists the inputs of the current function`,
         allowed: () => current.type === 'function',
