@@ -354,6 +354,11 @@ call list 2 d each go
 
 function tic tac toe cpu choice get go
 input board go
+local a go
+push board go
+call tic tac toe available get go
+store a go
+log a go
 
 function tic tac toe go
 call tic tac toe board new go
