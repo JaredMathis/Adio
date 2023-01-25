@@ -397,10 +397,18 @@ store item go
 
 function tic tac toe cpu choice get go
 input board go
-local a go
+local available go
 push board go
 call tic tac toe available get go
+store available go
+local a go
+push available go
+call list random item go
 store a go
+push board go
+push a go
+push number negative one go
+call tic tac toe board set go
 
 function tic tac toe if unoccupied go
 input board go
@@ -440,7 +448,7 @@ call tic tac toe if unoccupied go
     inner function valid go
     push board go
     push choice go
-    push number 1 go
+    push number one go
     call tic tac toe board set go
     push board go
     call tic tac toe cpu choice get go

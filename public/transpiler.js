@@ -55,6 +55,13 @@ function code_expression_get(e) {
         let joined = (remaining).join(" ");
         value = `"${joined}"`;
     } else if (e[0] === 'number') {
+        let factor;
+        if (e[1] === 'negative') {
+            factor = -1;
+            remaining = remaining.slice(1);
+        } else {
+            factor = 1;
+        }
         value = remaining.map(r => string_digit(r)).join('')
     } else {
         value = list_to_identifier(e)
