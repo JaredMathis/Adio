@@ -81,6 +81,20 @@ let commands = [
         }
     },
     {
+        prefix: 'delete output',
+        help: `This command deletes the ouptut of the current function`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            if (!current.output) {
+                await speak('There is no output.');
+            } else {
+                let before = current.output.name;
+                delete current.output;
+                await speak(`Output deleted named: ` + before)
+            }
+        }
+    },
+    {
         prefix: 'steps count',
         help: `This command says the number of steps of the current function`,
         allowed: () => current.type === 'function',
