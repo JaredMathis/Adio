@@ -220,7 +220,11 @@ let commands = [
             }
             current.inputs = [];
             if (current.function.inputs.length === 0) {
+                speak('running function ' + name);
                 await function_run(current.function, []);
+                speak('function completed ' + name);
+            } else {
+                speak('cannot run function because it requires arguments');
             }
         }
     },
