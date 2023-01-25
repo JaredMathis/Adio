@@ -363,14 +363,11 @@ store a go
 push a go
 call log go
 
-function tic tac toe go
-call tic tac toe board new go
-local board go
-store board go
-call tic tac toe instructions go
-call tic tac toe listen move go
-local choice go
-store choice go
+function tic tac toe if unoccupied go
+input board go
+input choice go
+input on unoccupied go
+input on occupied go
 push board go
 push choice go
 call tic tac toe board get go
@@ -382,9 +379,23 @@ call equals go
 local unoccupied go
 store unoccupied go
 push unoccupied go
+push on unoccupied go go
+push on occupied go
+call if else go
+
+function tic tac toe go
+call tic tac toe board new go
+local board go
+store board go
+call tic tac toe instructions go
+call tic tac toe listen move go
+local choice go
+store choice go
+push board go
+push choice go
 push valid go
 push invalid go
-call if else go
+call tic tac toe if unoccupied go
     inner function valid go
     push board go
     push choice go
