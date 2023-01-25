@@ -466,6 +466,7 @@ call list get go
 output value go
 store value go
 
+
 function tic tac toe cpu move go
 input board go
 local available go
@@ -526,6 +527,8 @@ function no operation go
 
 function tic tac toe player move go
 input board go
+push board go
+call log go
 call tic tac toe listen move go
 local choice go
 store choice go

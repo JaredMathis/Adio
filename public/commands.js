@@ -211,7 +211,7 @@ let commands = [
         prefix: 'run function',
         help:  `This command runs the function you say. If the function has inputs you will need to set those, first.`,
         allowed: () => true,
-        exec: name => {
+        exec: async name => {
             name = list_to_identifier(name)
             current = runner;
             current.function = function_get(name);
@@ -220,7 +220,7 @@ let commands = [
             }
             current.inputs = [];
             if (current.function.inputs.length === 0) {
-                function_run(current.function, []);
+                await function_run(current.function, []);
             }
         }
     },
