@@ -49,7 +49,7 @@ let commands = [
         prefix: 'function',
         help: `This command creates a function with the name you say, if it does not yet exist. Then it opens the function.`,
         allowed: () => true,
-        exec: name => {
+        exec: async name => {
             let before = name;
             name = list_to_identifier(name)
             current = function_get(name);
