@@ -52,7 +52,7 @@ let commands = [
         exec: async name => {
             let before = name;
             name = list_to_identifier(name);
-            current = function_get(name);
+            current_set(function_get(name));
             if (!current) {
                 await speak(`Function does not exist. Creating.`);
                 function_new(name);
@@ -243,14 +243,14 @@ let commands = [
 ]
 
 function function_new(name) {
-    current = {
+    current_set({
         type: 'function',
         name: name,
         inputs: [],
         locals: [],
         steps: [],
         inners: []
-    };
+    });
 }
 
 function function_inner_get(name) {

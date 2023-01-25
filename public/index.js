@@ -86,6 +86,14 @@ let data = {
     functions: [],
 };
 let current = {};
+
+function current_set(value) {
+    if (value === undefined) {
+        debugger;
+    }
+    current = value;
+}
+
 let runner = {
     type: 'runner',
 }
