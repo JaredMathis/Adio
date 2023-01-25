@@ -514,12 +514,18 @@ call tic tac toe if unoccupied go
     push words please choose another choice one through nine go
     call speak go
 
-function tic tac toe over check go
+function tic tac toe board sum go
 input board go
-input on each go
+input include if go
+
+push board go
+push on each go
 call list 2 d each go
     inner function on each go
-    
+    input value go
+    input column go
+    input row go
+
     back go
 
 function tic tac toe go
