@@ -368,7 +368,7 @@ eval string value symbol equals uppercase m lowercase a t h symbol dot random sy
 function multiply go
 output value go
 input a go
-input c go
+input b go
 eval string value symbol equals a symbol star b go
 
 function list random item go
