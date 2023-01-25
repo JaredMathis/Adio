@@ -621,8 +621,6 @@ push on each horizontal go
         push true go
         call identity go
         store winner go
-        push winner go
-        call log go
         back go
     call tic tac toe board check go
     back go
