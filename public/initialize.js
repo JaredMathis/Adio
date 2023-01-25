@@ -561,6 +561,7 @@ push number 3 go
     inner function on each horizontal go
     input index go
     push board go
+    push include if go
         inner function include if go
         input row go
         input column go
@@ -570,18 +571,8 @@ push number 3 go
         output row equals index go
         store row equals index go
         back go
-    push include if go
-    call tic tac toe board sum go
-    local sum go
-    store sum go
-    local sum equals target go
-    push sum go
-    push target sum go
-    call equals go
-    store sum equals target go
     push if sum equals target go
-    push no operation go
-    call if else go
+    call tic tac toe board check go
     back go
 push on each horizontal go
 call range each go
