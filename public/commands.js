@@ -54,9 +54,9 @@ let commands = [
             name = list_to_identifier(name)
             current = function_get(name);
             if (!current) {
-                await speak(`Function does not exist. Creating ` + before)
+                await speak(`Function does not exist. Creating ` + before);
                 function_new(name);
-                data.functions.push(current)
+                data.functions.push(current);
             }
         }
     },
