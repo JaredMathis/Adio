@@ -222,6 +222,10 @@ let commands = [
         help: `This command changes the current to the parent object`,
         allowed: () => current.type === 'function',
         exec: async () => {
+            if (current === data) {
+                await speak(`You are already home. You cannot go back.`);
+                return;
+            }
             do {
                 let before = current;
                 current_set(parent_get(data, current));
