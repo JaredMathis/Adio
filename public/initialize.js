@@ -514,6 +514,14 @@ call tic tac toe if unoccupied go
     push words please choose another choice one through nine go
     call speak go
 
+function tic tac toe over check go
+input board go
+input on each go
+call list 2 d each go
+    inner function on each go
+    
+    back go
+
 function tic tac toe go
 call tic tac toe board new go
 local board go
@@ -521,4 +529,5 @@ store board go
 call tic tac toe instructions go
 push board go
 call tic tac toe player move go
+
 `)
