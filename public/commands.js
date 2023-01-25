@@ -63,6 +63,7 @@ let commands = [
             if (before === 0) {
                 await speak('There are no inner functions.');
             } else {
+                current.inners.length = 0;
                 await speak(`Inner functions cleared. Count was ${before}`)
             }
         }
