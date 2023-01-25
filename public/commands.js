@@ -55,6 +55,18 @@ let commands = [
         }
     },
     {
+        prefix: 'current output',
+        help: `This command lists the ouptut of the current function`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            if (!current.output) {
+                await speak('There is no output.');
+            } else {
+                await speak(`The output is: ` + current.output.name)
+            }
+        }
+    },
+    {
         prefix: 'list all inputs',
         help: `This command lists the inputs of the current function`,
         allowed: () => current.type === 'function',
