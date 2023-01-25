@@ -176,6 +176,12 @@ push number three go
 call list 2 d new go
 store board go
 
+
+function number is go
+input n go
+output value go
+
+
 function tic tac toe move convert go
 input move go
 input on invalid go
@@ -184,6 +190,9 @@ push on invalid go
 call string digit go
 local move number go
 store move number go
+
+
+
 push move number go
 call subtract one go
 local move number less go
