@@ -444,8 +444,21 @@ push board go
 push a go
 push number negative one go
 call tic tac toe board set go
-store choice
-tic tac toe move deconvert
+push board go
+push a go
+tic tac toe move deconvert go
+local a n go
+store a n go
+local message go
+push words the computer chose cell go
+call identity go
+store message go
+push message go
+push a n go
+call add go
+store message go
+push message go
+call speak go
 
 function tic tac toe if unoccupied go
 input board go
