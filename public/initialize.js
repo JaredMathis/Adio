@@ -349,9 +349,15 @@ call list 2 d each go
     push string column go
     push column go
     call property set go
-    push available go
+    push board go
     push a go
-    call list add go
+    push on unoccupied go
+    call tic tac toe if unoccupied go
+        inner function on unoccupied go
+        push available go
+        push a go
+        call list add go
+        back go
     back go
 
 function tic tac toe cpu choice get go
@@ -379,7 +385,7 @@ call equals go
 local unoccupied go
 store unoccupied go
 push unoccupied go
-push on unoccupied go go
+push on unoccupied go
 push on occupied go
 call if else go
 
