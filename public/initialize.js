@@ -657,6 +657,46 @@ push on each vertical go
     call tic tac toe board check go
     back go
 call range each go
+push number 3 go
+push on each diagonal down go
+    inner function on each diagonal down go
+    input index go
+    push board go
+    push include if go
+        inner function include if go
+        input row go
+        input column go
+        push column go
+        push row go
+        call equals go
+        output column equals row go
+        store column equals row go
+        back go
+    push target sum go
+    push if sum equals target go
+    call tic tac toe board check go
+    back go
+call range each go
+push number 3 go
+push on each diagonal up go
+    inner function on each diagonal up go
+    input index go
+    push board go
+    push include if go
+        inner function include if go
+        input row go
+        input column go
+        push column go
+        push row go
+        call equals go
+        output column equals row go
+        store column equals row go
+        back go
+    push target sum go
+    push if sum equals target go
+    call tic tac toe board check go
+    back go
+call range each go
     inner function if sum equals target go
     push true go
     call identity go
