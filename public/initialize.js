@@ -514,6 +514,8 @@ call tic tac toe if unoccupied go
     push words please choose another choice one through nine go
     call speak go
 
+function tic tac toe draw check go
+
 function tic tac toe winner check go
 
 
