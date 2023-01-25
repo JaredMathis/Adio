@@ -59,7 +59,7 @@ let commands = [
                 data.functions.push(next);
             }
             current_set(next);
-            await speak(`Opened function ` + before);
+            await speak(`Opened function: ` + before);
         }
     },
     {
@@ -67,13 +67,16 @@ let commands = [
         help: `This command creates an inner function with the name you say, if it does not yet exist. Then it opens the function. You must be in a function to create an inner function.`,
         allowed: () => current.type === 'function',
         exec: name => {
+            let before = name;
             name = list_to_identifier(name);
             let previous = current;
             let next = function_inner_get(name);
             if (!next) {
+                await speak(`Inner function does not exist. Creating.`);
                 next = function_new(name);
                 previous.inners.push(next)
             }
+            await speak(`Opened inner function: ` + before);
             current_set(next);
         }
     },
@@ -114,7 +117,8 @@ let commands = [
         prefix: 'input',
         help:  `This command creates a function input with the name you say.`,
         allowed: () => current.type === 'function',
-        exec: args => {
+        exec: async args => {
+            let before = name;
             let name = list_to_identifier(args);
             let input = {
                 type: 'input',
@@ -122,17 +126,18 @@ let commands = [
             };
             for (let i of current.inputs) {
                 if (i.name === name) {
-                    error(`Input ${name} already exists for function ${parent_get(data, current).name}`);
+                    await error(`Input ${name} already exists for function ${parent_get(data, current).name}`);
                 }
             }
             current.inputs.push(input);
+            await speak(`Added input: ` + before)
         }
     },
     {
         prefix: 'local',
         help:  `This command creates a local variable with the name you say.`,
         allowed: () => current.type === 'function',
-        exec: args => {
+        exec: async args => {
             let name = list_to_identifier(args);
             let input = {
                 type: 'local',
@@ -140,7 +145,7 @@ let commands = [
             };
             for (let i of current.locals) {
                 if (i.name === name) {
-                    error(`Local ${name} already exists for function ${parent_get(data, current).name}`);
+                    await error(`Local ${name} already exists for function ${parent_get(data, current).name}`);
                 }
             }
             current.locals.push(input);
