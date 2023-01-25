@@ -634,14 +634,34 @@ push on each horizontal go
         back go
     push target sum go
     push if sum equals target go
-        inner function if sum equals target go
-        push true go
-        call identity go
-        store winner go
-        back go
     call tic tac toe board check go
     back go
 call range each go
+push number 3 go
+push on each vertical go
+    inner function on each vertical go
+    input index go
+    push board go
+    push include if go
+        inner function include if go
+        input row go
+        input column go
+        push column go
+        push index go
+        call equals go
+        output column equals index go
+        store column equals index go
+        back go
+    push target sum go
+    push if sum equals target go
+    call tic tac toe board check go
+    back go
+call range each go
+    inner function if sum equals target go
+    push true go
+    call identity go
+    store winner go
+    back go
 
 function debug go
 eval string one symbol semicolon debugger go
