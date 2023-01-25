@@ -241,6 +241,10 @@ push move go
 push on invalid go
     inner function on invalid go
     output converted go
+    push words invalid choice go
+    call speak go
+    push move go
+    call speak go
     call tic tac toe listen move go
     store converted go
     back go
