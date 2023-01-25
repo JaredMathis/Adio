@@ -312,20 +312,21 @@ let commands = [
         prefix: 'store',
         help:  `This command sets the variable you say to the value of the most recently called function in this function.`,
         allowed: () => current.type === 'function',
-        exec: name => {
+        exec: async name => {
             name = list_to_identifier(name)
             let step = {
                 type: 'store',
                 name,
             };
             current.steps.push(step);
+            await speak(`Added step: ${step.type} ${step.name}`);
         }
     },
     {
         prefix: 'output',
         help:  `This command sets the function output with the name you say.`,
         allowed: () => current.type === 'function',
-        exec: name => {
+        exec: async name => {
             name = list_to_identifier(name)
             if (current.output) {
                 error(`Output ${name} already exists for function ${parent_get(data, current).name}`);
@@ -335,6 +336,7 @@ let commands = [
                 name,
             };
             current.output = output;
+            await speak(`Added step: ${step.type} ${step.name}`);
         }
     },
     {
