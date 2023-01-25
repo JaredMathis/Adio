@@ -659,32 +659,43 @@ store winner go
 output game over go
 push winner go
 store game over go
-local player name go
-local player equals one go
-push player go
-push number one go
-call equals go
-store player equals go
-push player equals one go
-push on if go
-    inner function on if go
-    push words congratulations you go
+push game over go
+push on game over go
+    inner function on game over go
+    local player name go
+    local player equals one go
+    push player go
+    push number one go
+    call equals go
+    store player equals go
+    push player equals one go
+    push on if go
+        inner function on if go
+        push words congratulations you go
+        call identity go
+        store player name go
+        back go
+    push on else go    
+        inner function on if go
+        push words the computer go
+        call identity go
+        store player name go
+        back go
+    call if else go
+    local message go
+    push player name go
     call identity go
-    store player name go
+    store message go
+    push message go
+    push words won the game go
+    call add go
+    store message go
     back go
-push on else go    
-    inner function on if go
-    push words the computer go
-    call identity go
-    store player name go
-    back go
+push no operation go
 call if else go
-local message go
-push player name go
-call identity go
-store message go
-push message go
-push words won the game go
+
+
+
 
 
 function tic tac toe board sum go
