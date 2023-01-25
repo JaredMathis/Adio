@@ -535,7 +535,7 @@ store available count go
 push available count go
 push number zero go
 call equals go
-result game over go
+output game over go
 store game over go
 
 function tic tac toe board check go
