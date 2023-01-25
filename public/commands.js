@@ -80,7 +80,7 @@ let commands = [
         allowed: () => current.type === 'function',
         exec: async (remaining) => {
             let n = parseInt(remaining, 10);
-            let s = current.steps[n];
+            let s = current.steps[n - 1];
             await speak(`Step ${n} is ${s.type} ${s.value}`);
         }
     },
