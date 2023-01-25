@@ -583,10 +583,10 @@ push sum go
 push target sum go
 call equals go
 store sum equals target go
+push sum equals target go
 push if sum equals target go
 push no operation go
 call if else go
-call debug go
 
 function tic tac toe winner check go
 input board go
@@ -616,15 +616,15 @@ push on each horizontal go
         store row equals index go
         back go
     push target sum go
-    push if sum equals target go
+    push if sum equals target gogo
+        inner function if sum equals target go
+        push true go
+        call identity go
+        store winner go
+        back go
     call tic tac toe board check go
     back go
-call range each go
-    inner function if sum equals target go
-    push true go
-    call identity go
-    store winner go
-    back go
+call range each 
 
 function debug go
 eval string one symbol semicolon debugger go
