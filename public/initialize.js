@@ -589,7 +589,7 @@ push number 3 go
     back go
 push on each horizontal go
 call range each go
-    local function if sum equals target go
+    inner function if sum equals target go
     push true go
     call identity go
     store winner go
