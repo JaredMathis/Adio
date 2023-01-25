@@ -18,7 +18,7 @@ push b go
 call add go
 store d go
 push d go
-add c go
+push c go
 call add go
 store d go
 
