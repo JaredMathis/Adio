@@ -226,11 +226,7 @@ let commands = [
             }
             current.inputs = [];
             if (current.function.inputs.length === 0) {
-                await speak('running function: ' + before);
                 await function_run(current.function, []);
-                await speak('function completed: ' + before);
-            } else {
-                await speak('cannot run; arguments required for function: ' + before);
             }
         }
     },

@@ -1,5 +1,7 @@
 
 async function function_run(fn, inputs) {
+    let before = identifier_to_string(fn.name);
+    await speak('running function: ' + before);
     for (let f of data.functions) {
         let code = code_get(f);
         output(code);
@@ -9,8 +11,9 @@ async function function_run(fn, inputs) {
     output(code2);
     let result = await eval_global(code2)
     if (result !== undefined) {
-        speak(result);
+        await speak(result);
     }
+    await speak('function completed: ' + before);
 }
 
 function code_get(fn) {
