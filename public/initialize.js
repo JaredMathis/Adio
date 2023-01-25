@@ -536,6 +536,8 @@ push number 3 go
     inner function on each horizontal go
     push board go
         inner function include if go
+        input row go
+        input column go
         back go
     push include if go
     call tic tac toe board sum go
