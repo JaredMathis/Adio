@@ -552,6 +552,8 @@ store choice go
 push board go
 push choice go
 push valid go
+push invalid go
+call tic tac toe if unoccupied go
     inner function valid go
     push board go
     push choice go
@@ -571,13 +573,12 @@ push valid go
         back go
     call if else go
     back go
-push invalid go
+
     inner function invalid go
     push words that choice is already taken go
     call speak go
     push words please choose another choice one through nine go
     call speak go
-call tic tac toe if unoccupied go
 
 function tic tac toe draw check go
 input board go
@@ -791,6 +792,7 @@ push on no game over go
         call speak go
         back go
     push no operation go
+    call if else go
     back go
 call if else go
 
