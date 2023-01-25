@@ -507,7 +507,18 @@ store message go
 push message go
 call speak go
 push board go
-call tic tac toe player move go
+push number negative one go
+call tic tac toe game over check go
+local game over go
+store game over go
+push game over go
+push no operation go
+push on game not over go
+    inner function on game not over go
+    push board go
+    call tic tac toe player move go
+    back go
+call if else go
 
 function tic tac toe if unoccupied go
 input board go
