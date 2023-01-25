@@ -51,7 +51,7 @@ let commands = [
         allowed: () => true,
         exec: async name => {
             let before = name;
-            name = list_to_identifier(name)
+            name = list_to_identifier(name);
             current = function_get(name);
             if (!current) {
                 await speak(`Function does not exist. Creating.`);
