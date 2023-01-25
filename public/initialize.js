@@ -519,7 +519,7 @@ input board go
 input include if go
 push number zero go
 call identity go
-input sum go
+local sum go
 store sum go
 push board go
 push on each go
