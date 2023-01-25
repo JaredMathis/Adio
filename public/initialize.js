@@ -518,6 +518,13 @@ function tic tac toe draw check go
 input board go
 push board go
 call tic tac toe available get go
+local available go
+store available go
+push available go
+call list size go
+local available count go
+store available count go
+
 
 function tic tac toe winner check go
 
