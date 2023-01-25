@@ -650,7 +650,6 @@ output sum go
 store sum go
 push board go
 push on each go
-call list 2 d each go
     inner function on each go
     input value go
     input column go
@@ -671,6 +670,7 @@ call list 2 d each go
     push no operation go
     call if else go
     back go
+call list 2 d each go
 
 function tic tac toe go
 call tic tac toe board new go
