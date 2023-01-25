@@ -50,10 +50,11 @@ let commands = [
         help: `This command creates a function with the name you say, if it does not yet exist. Then it opens the function.`,
         allowed: () => true,
         exec: name => {
+            let before = name;
             name = list_to_identifier(name)
             current = function_get(name);
             if (!current) {
-                speak()
+                await speak(`Function does not exist. Creating ` + before)
                 function_new(name);
                 data.functions.push(current)
             }
