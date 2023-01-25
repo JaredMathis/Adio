@@ -52,12 +52,13 @@ let commands = [
         exec: async name => {
             let before = name;
             name = list_to_identifier(name);
-            current_set(function_get(name));
+            let next = function_get(name);
             if (!current) {
                 await speak(`Function does not exist. Creating.`);
-                function_new(name);
+                next = function_new(name);
                 data.functions.push(current);
             }
+            current_set(next);
             await speak(`Opened function ` + before);
         }
     },
