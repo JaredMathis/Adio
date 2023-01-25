@@ -285,25 +285,27 @@ let commands = [
         prefix: 'push',
         help:  `This command sets the next argument for the next function call with the value you say.`,
         allowed: () => current.type === 'function',
-        exec: value => {
+        exec: async value => {
             let step = {
                 type: 'push',
                 value,
             };
             current.steps.push(step);
+            await speak(`Added step: ${step.type} ${step.value}`);
         }
     },
     {
         prefix: 'call',
         help:  `This command calls the function you say with any arguments you've supplied from push.`,
         allowed: () => current.type === 'function',
-        exec: name => {
+        exec: async name => {
             name = list_to_identifier(name)
             let step = {
                 type: 'call',
                 name,
             };
             current.steps.push(step);
+            await speak(`Added step: ${step.type} ${step.name}`);
         }
     },
     {
