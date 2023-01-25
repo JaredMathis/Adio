@@ -64,7 +64,7 @@ let commands = [
                 await speak('There are no inner functions.');
             } else {
                 current.inners.length = 0;
-                await speak(`Inner functions cleared. Count was ${before}`)
+                await speak(`Inner functions deleted. Count was ${before}`)
             }
         }
     },
@@ -152,7 +152,7 @@ let commands = [
                 await speak('There are no inputs.');
             } else {
                 current.inputs.length = 0;
-                await speak(`Inputs cleared. Count was ${before}`)
+                await speak(`Inputs deleted. Count was ${before}`)
             }
         }
     },
@@ -178,7 +178,7 @@ let commands = [
                 await speak('There are no locals.');
             } else {
                 current.locals.length = 0;
-                await speak(`locals cleared. Count was ${before}`)
+                await speak(`Locals deleted. Count was ${before}`)
             }
         }
     },
