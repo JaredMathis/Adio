@@ -481,7 +481,7 @@ call tic tac toe available get go
 store available go
 local a go
 push available go
-call list first go
+call list random item go
 store a go
 push board go
 push a go
