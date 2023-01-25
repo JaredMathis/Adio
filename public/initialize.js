@@ -595,14 +595,14 @@ call range each go
     store winner go
     back go
 
-
 function tic tac toe game over check go
 input board go
 input player go
 push board go
 push player go
 call tic tac toe winner check go
-
+local winner go
+store winner go
 
 function tic tac toe board sum go
 input board go
