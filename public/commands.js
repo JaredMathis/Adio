@@ -55,6 +55,30 @@ let commands = [
         }
     },
     {
+        prefix: 'list all inputs',
+        help: `This command lists the inputs of the current function`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            if (current.inputs.length === 0) {
+                await speak('There are no inputs.');
+            } else {
+                await speak(`The following inputs exist: ` + current.inputs.map(i => i.name).join('. '))
+            }
+        }
+    },
+    {
+        prefix: 'list all locals',
+        help: `This command lists the locals of the current function`,
+        allowed: () => current.type === 'function',
+        exec: async () => {
+            if (current.locals.length === 0) {
+                await speak('There are no locals.');
+            } else {
+                await speak(`The following locals exist: ` + current.locals.map(i => i.name).join('. '))
+            }
+        }
+    },
+    {
         prefix: 'function',
         help: `This command creates a function with the name you say, if it does not yet exist. Then it opens the function.`,
         allowed: () => true,
