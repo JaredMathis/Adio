@@ -446,7 +446,7 @@ push number negative one go
 call tic tac toe board set go
 push board go
 push a go
-tic tac toe move deconvert go
+call tic tac toe move deconvert go
 local a n go
 store a n go
 local message go
