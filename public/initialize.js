@@ -562,16 +562,16 @@ push number 3 go
     call equals go
     store sum equals target go
     push if sum equals target go
-        local function if sum equals target go
-        push true go
-        call identity go
-        store winner go
-        back go
     push no operation go
     call if else go
     back go
 push on each horizontal go
 call range each go
+    local function if sum equals target go
+    push true go
+    call identity go
+    store winner go
+    back go
 
 
 
