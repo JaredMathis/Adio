@@ -184,6 +184,7 @@ eval string value symbol equals symbol plus n symbol equals symbol equals symbol
 function tic tac toe move convert go
 input move go
 input on invalid go
+output converted go
 push move go
 push true go
 call string digit go
@@ -211,7 +212,6 @@ push on valid go
     local move column go
     store move column go
     call object new go
-    output converted go
     store converted go
     push converted go
     push string row go
@@ -222,7 +222,11 @@ push on valid go
     push move column go
     call property set go
     back go
-push on invalid go
+push invalid go
+    inner function invalid go
+    call on invalid go
+    store converted go
+    back go
 call if else go
 
 function tic tac toe listen move go
@@ -233,6 +237,7 @@ store move go
 push move go
 push on invalid go
     inner function on invalid go
+    output converted go
     call tic tac toe listen move go
     store converted go
     back go
