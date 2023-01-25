@@ -185,7 +185,6 @@ function tic tac toe move convert go
 input move go
 input on invalid go
 push move go
-push on invalid go
 call string digit go
 local move number go
 store move number go
@@ -193,34 +192,40 @@ push move number go
 call number is go
 local move number valid go
 store move number valid go
-
-push move number go
-call subtract one go
-local move number less go
-store move number less go
-push move number less go
-push number three go
-call divide floor go
-local move row go
-store move row go
-push move number less go
-push number three go
-call mod go
-local move column go
-store move column go
-call object new go
-output converted go
-store converted go
-push converted go
-push string row go
-push move row go
-call property set go
-push converted go
-push string column go
-push move column go
-call property set go
+push move number valid go
+push on valid go
+    inner function on valid go
+    push move number go
+    call subtract one go
+    local move number less go
+    store move number less go
+    push move number less go
+    push number three go
+    call divide floor go
+    local move row go
+    store move row go
+    push move number less go
+    push number three go
+    call mod go
+    local move column go
+    store move column go
+    call object new go
+    output converted go
+    store converted go
+    push converted go
+    push string row go
+    push move row go
+    call property set go
+    push converted go
+    push string column go
+    push move column go
+    call property set go
+    back go
+push on invalid go
+call if else go
 
 function tic tac toe listen move go
+output converted go
 call listen go
 local move go
 store move go
@@ -228,9 +233,9 @@ push move go
 push on invalid go
     inner function on invalid go
     call tic tac toe listen move go
+    store converted go
     back go
 call tic tac toe move convert go
-output converted go
 store converted go
 
 function tic tac toe instructions go
