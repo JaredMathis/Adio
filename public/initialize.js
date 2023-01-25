@@ -395,6 +395,18 @@ call list get go
 output item go
 store item go
 
+function identity go
+input a go
+output b go
+eval string b symbol equals a go
+
+function tic tac toe move deconvert go
+input choice go
+output sum go
+push number one go
+call identity go
+store sum go
+
 function tic tac toe cpu choice get go
 input board go
 local available go
@@ -409,6 +421,7 @@ push board go
 push a go
 push number negative one go
 call tic tac toe board set go
+
 
 function tic tac toe if unoccupied go
 input board go
