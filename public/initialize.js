@@ -530,6 +530,24 @@ call equals go
 result game over go
 store game over go
 
+function tic tac toe board check go
+input board go
+input include if go
+input if sum equals target go
+push board go
+push include if go
+call tic tac toe board sum go
+local sum go
+store sum go
+local sum equals target go
+push sum go
+push target sum go
+call equals go
+store sum equals target go
+push if sum equals target go
+push no operation go
+call if else go
+
 function tic tac toe winner check go
 input board go
 input player go
