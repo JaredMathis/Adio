@@ -118,11 +118,12 @@ let commands = [
         help: `This command deletes the inputs of the current function`,
         allowed: () => current.type === 'function',
         exec: async () => {
-            if (current.inputs.length === 0) {
+            let before =current.inputs.length 
+            if (before === 0) {
                 await speak('There are no inputs.');
             } else {
-                current.inputs.length === 0;
-                await speak(`Inputs cleared`)
+                current.inputs.length = 0;
+                await speak(`Inputs cleared. Count was ${before}`)
             }
         }
     },
