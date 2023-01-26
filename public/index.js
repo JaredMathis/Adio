@@ -28,18 +28,12 @@ function speak(words) {
         return Promise.resolve();
     }
     return new Promise((resolve) => {
-        if (output_audio_pauses)
-            output('paused audio')
         annyang.abort();
 
         var msg = new SpeechSynthesisUtterance();
         msg.text = most_recent = words;
 
         msg.onend = (event) => {
-            if (output_audio_pauses)
-                output('finished ' + words);
-            if (output_audio_pauses)
-                output('starting audio');
             annyang.start();
             resolve();
         }
