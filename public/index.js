@@ -43,6 +43,7 @@ function annyang_start() {
     return new Promise(resolve => {
         on_annyang_start_resolves.push(resolve);
         annyang.start();
+        output('start called');
     });
 }
 
