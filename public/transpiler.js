@@ -66,7 +66,7 @@ function code_expression_get(e) {
         } else {
             factor = 1;
         }
-        value = remaining.map(r => string_digit(r)).join('')
+        value = (await Promise.all(remaining.map(async r => await string_digit(r)))).join('');
         value *= factor;
     } else {
         value = list_to_identifier(e)
