@@ -1,7 +1,7 @@
 
-async function function_run(fn, inputs) {
+async function function_execute(fn, inputs) {
     let before = identifier_to_string(fn.name);
-    await speak('running function: ' + before);
+    await speak('Executing function: ' + before);
     for (let f of data.functions) {
         let code = code_get(f);
         output(code);

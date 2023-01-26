@@ -270,7 +270,7 @@ let commands = [
                 error(`Function ${current.function.name} expects ${expect} input; received ${actual}`)
             } else {
                 if (expect === actual) {
-                    function_run(current.function, current.inputs);
+                    function_execute(current.function, current.inputs);
                 }
             }
         }
@@ -387,7 +387,7 @@ let commands = [
         }
     },
     {
-        prefix: 'run function',
+        prefix: 'execute',
         help:  `This command runs the function you say. If the function has inputs you will need to set those, first.`,
         allowed: () => true,
         exec: async name => {
@@ -400,7 +400,7 @@ let commands = [
             }
             current.inputs = [];
             if (current.function.inputs.length === 0) {
-                await function_run(current.function, []);
+                await function_execute(current.function, []);
             } else {
                 await speak(`Input count is: ${current.function.inputs.length}`);
             }
