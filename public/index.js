@@ -47,7 +47,8 @@ function output(message) {
 let buffer = [];
 
 async function process_audio(input_string) {
-    let non_empty = string_split_by_whitespace(input_string);
+    let no_specials = input_string.replace('.', '');
+    let non_empty = string_split_by_whitespace(no_specials);
     let filtered = list_string_non_empty(non_empty);
     let trimmed = filtered.map(f => f.trim('\n'));
     let lowered = trimmed.map(f => f.toLowerCase());
