@@ -66,7 +66,7 @@ function code_expression_get(e) {
         } else {
             factor = 1;
         }
-        value = (await Promise.all(remaining.map(async r => await string_digit(r)))).join('');
+        value = remaining.map(r => string_digit(r)).join('');
         value *= factor;
     } else {
         value = list_to_identifier(e)
@@ -74,7 +74,7 @@ function code_expression_get(e) {
     return value;
 }
 
-async function string_digit(s, undefined_on_invalid) {
+function string_digit(s, undefined_on_invalid) {
     if (/\d+/.test(s)) {
         return parseInt(s, 10);
     }
@@ -98,7 +98,7 @@ async function string_digit(s, undefined_on_invalid) {
     if (undefined_on_invalid) {
         return;
     } else {
-        await error('Invalid digit: ' + s);
+        throw new Error('Invalid digit: ' + s);
     }
 }
 
