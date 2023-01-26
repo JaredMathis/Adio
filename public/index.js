@@ -61,7 +61,7 @@ function speak(words) {
             await annyang_start();
             resolve();
         }
-        // window.speechSynthesis.cancel();
+        window.speechSynthesis.cancel();
         window.speechSynthesis.speak(msg);
         output('speaking: ' + msg.text)
     })
