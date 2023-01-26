@@ -17,6 +17,7 @@ let sound = true;
 
 let on_annyang_start_resolves = [];
 function on_annyang_start() {
+    output('start event');
     for (let r of on_annyang_start_resolves) {
         r();
     }
@@ -25,6 +26,7 @@ function on_annyang_start() {
 
 let on_annyang_end_resolves = [];
 function on_annyang_end() {
+    output('end event');
     for (let r of on_annyang_end_resolves) {
         r();
     }
