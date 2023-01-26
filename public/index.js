@@ -15,26 +15,47 @@ let most_recent;
 
 let sound = true;
 
+let on_annyang_start_resolves = [];
 function on_annyang_start() {
-
+    for (let r of on_annyang_start_resolves) {
+        r();
+    }
+    on_annyang_start_resolves.length === 0
 }
 
+let on_annyang_end_resolves = [];
 function on_annyang_end() {
+    for (let r of on_annyang_end_resolves) {
+        r();
+    }
+    on_annyang_end_resolves.length === 0
+}
 
+function annyang_abort() {
+    return new Promise(resolve => {
+        on_annyang_end_resolves.push(resolve);
+        annyang.abort();
+    });
+}
+function annyang_start() {
+    return new Promise(resolve => {
+        on_annyang_start_resolves.push(resolve);
+        annyang.start();
+    });
 }
 
 function speak(words) {
     if (!sound) {
         return Promise.resolve();
     }
-    return new Promise((resolve) => {
-        annyang.abort();
+    return new Promise(async (resolve) => {
+        await annyang_abort();
 
         var msg = new SpeechSynthesisUtterance();
         msg.text = most_recent = words;
 
-        msg.onend = (event) => {
-            annyang.start();
+        msg.onend = async (event) => {
+            await annyang_start();
             resolve();
         }
         // window.speechSynthesis.cancel();
