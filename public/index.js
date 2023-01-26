@@ -59,7 +59,7 @@ function speak(words) {
 
         msg.onend = async (event) => {
             await annyang.start();
-            resolve();
+            setTimeout(() => resolve(), 2000);
         }
         window.speechSynthesis.cancel();
         window.speechSynthesis.speak(msg);
