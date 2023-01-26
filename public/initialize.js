@@ -593,6 +593,9 @@ call tic tac toe if unoccupied go
     call speak go
     push words please choose another choice one through nine go
     call speak go
+    push board go
+    call tic tac toe player move go
+    back go
 
 function tic tac toe draw check go
 input board go
