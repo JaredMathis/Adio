@@ -53,7 +53,7 @@ function speak(words) {
     }
     return new Promise(async (resolve) => {
         await annyang.abort();
-        await sleep(1000);
+        await sleep(200);
 
         var msg = new SpeechSynthesisUtterance();
         msg.text = most_recent = words;
