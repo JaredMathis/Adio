@@ -53,17 +53,24 @@ function speak(words) {
     }
     return new Promise(async (resolve) => {
         await annyang.abort();
+        await sleep(200);
 
         var msg = new SpeechSynthesisUtterance();
         msg.text = most_recent = words;
 
         msg.onend = async (event) => {
             await annyang.start();
-            setTimeout(() => resolve(), 100);
+            await sleep(200);
         }
         window.speechSynthesis.cancel();
         window.speechSynthesis.speak(msg);
         output('speaking: ' + msg.text)
+    })
+}
+
+function sleep(ms) {
+    return new Promise(resolve => {
+        setTimeout(() => resolve(), ms);
     })
 }
 
