@@ -3,6 +3,9 @@ if (annyang) {
         process_audio(result[0])
     })
 
+    annyang.addCallback('start', on_annyang_start)
+    annyang.addCallback('end', on_annyang_end)
+
     annyang.start();
 }
 
@@ -11,6 +14,14 @@ let output_audio_pauses = false
 let most_recent;
 
 let sound = true;
+
+function on_annyang_start() {
+
+}
+
+function on_annyang_end() {
+
+}
 
 function speak(words) {
     if (!sound) {
