@@ -52,13 +52,13 @@ function speak(words) {
         return Promise.resolve();
     }
     return new Promise(async (resolve) => {
-        await annyang_abort();
+        await annyang.abort();
 
         var msg = new SpeechSynthesisUtterance();
         msg.text = most_recent = words;
 
         msg.onend = async (event) => {
-            await annyang_start();
+            await annyang.start();
             resolve();
         }
         window.speechSynthesis.cancel();
